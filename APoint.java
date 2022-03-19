@@ -1,4 +1,4 @@
-public class APoint {
+    public class APoint {
     // Attributs
         
     public double x;

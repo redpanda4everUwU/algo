@@ -7,7 +7,7 @@ public class FenetrePlotBallon extends JFrame{
 
     public FenetrePlotBallon() {
         this.setTitle("Ballon");
-        this.setSize(600, 600);
+        this.setSize(800, 800);
         this.setLocation(800, 200);
         this.setResizable(false) ;
         this.setVisible(false);

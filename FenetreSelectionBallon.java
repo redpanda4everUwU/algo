@@ -44,7 +44,7 @@ public class FenetreSelectionBallon extends JFrame implements ActionListener{
         c3.add(c2);
         
         // Texte 1
-        JLabel E1 = new JLabel("Entrez un numero de ballon entre 1 et 5 : ");
+        JLabel E1 = new JLabel("Entrez un numero de ballon entre 1 et "+monTabBallon.length+" : ");
         E1.setSize(360,30);
         E1.setLocation(10,25);
         c1.add(E1);

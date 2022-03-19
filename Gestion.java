@@ -4,7 +4,7 @@ public class Gestion {
     public static void main (String [] args){
     
     // Position initiale
-    APoint p = new APoint (0, 150);
+    APoint p = new APoint (100, 150);
     
     // Création d'un tableau de ballons
         Ballon[] tabBallon=new Ballon[4];
