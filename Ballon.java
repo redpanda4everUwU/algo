@@ -1,5 +1,7 @@
-import java.util.* ;
+
 import java.awt.*;
+import java.awt.image.BufferedImage;
+
 
 public class Ballon {
 
@@ -7,15 +9,14 @@ public class Ballon {
     
     private double masse ;
     private double rayon ;
-    private Color couleur ;
     private APoint position ;
-    
+    private BufferedImage image;
     // Constructeur
 
-    public Ballon (double m, double r, Color c, APoint p){
+    public Ballon (double m, double r,BufferedImage i, APoint p){
         this.masse = m ;
         this.rayon = r ;
-        this.couleur = c ;
+        this.image = i ;
         this.position = p ;
     }
     
@@ -29,15 +30,16 @@ public class Ballon {
         return this.rayon ;
     }
     
-    public Color getCouleur(){
-        return this.couleur ;
+    public Image getDessin(){
+        return this.image ;
     }
     
     // Méthodes
     
     public void dessine (Graphics g){
-        g.setColor(this.couleur);
+        g.drawImage(this.image,0,0,null);
         g.fillOval((int) (this.position.x - this.rayon), (int) (this.position.y - this.rayon), (int) (2*this.rayon), (int) (2*this.rayon));
+    
     }
 }
 
