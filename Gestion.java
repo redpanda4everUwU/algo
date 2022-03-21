@@ -1,16 +1,16 @@
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.IOException;
+
 
 public class Gestion {
-    public static void main (String [] args)throws IOException{
+    public static void main (String [] args){
     
     // Position initiale
-    APoint p = new APoint (100, 150);
+    APoint p = new APoint (300, 100);
+    Image balle;
     
-    BufferedImage balle = ImageIO.read(new File("basket.png"));
+    Toolkit T=Toolkit.getDefaultToolkit();
+    balle = T.getImage("basket.png");
+
     
     // Création d'un tableau de ballons
         Ballon[] tabBallon=new Ballon[4];
