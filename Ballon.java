@@ -36,7 +36,10 @@ public class Ballon {
     // Méthodes
     
     public void dessine (Graphics g){
-        g.drawImage(this.image,700,400,null);
+        g.setColor(Color.BLUE);
+        g.drawImage(this.image,0,0,null);
+        System.out.println(g.drawImage(this.image,0,0,null));
+        g.fillOval((int) (this.position.x - this.rayon), (int) (this.position.y - this.rayon), (int) (2*this.rayon), (int) (2*this.rayon));
 
     }
 }

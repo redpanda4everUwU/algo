@@ -30,5 +30,6 @@ public class FenetrePlotBallon extends JFrame{
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         if (monBallon!=null)
             monBallon.dessine(g);
+        
         }
 }    
