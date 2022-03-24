@@ -1,7 +1,8 @@
 import javax.swing.* ;
- import java.awt.*;
+import java.awt.*;
+ 
 
-public class FenetrePlotBallon extends JFrame{
+public class FenetrePlotBallon extends JFrame implements ActionListener{
     
     private Ballon monBallon ;
 
@@ -24,7 +25,7 @@ public class FenetrePlotBallon extends JFrame{
         repaint();
     }
     
-    // Afgficher la fenêtre de jeu : dessiner ballon + background
+    // Afficher la fenêtre de jeu : dessiner ballon + background
     public void paint(Graphics g) {
         g.setColor(Color.white);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
@@ -32,4 +33,6 @@ public class FenetrePlotBallon extends JFrame{
             monBallon.dessine(g);
         
         }
+    
+    
 }    
