@@ -24,9 +24,9 @@ public class FenetrePlotBallon extends JFrame{
         repaint();
     }
     
-    // Dessiner ballon
+    // Afgficher la fenêtre de jeu : dessiner ballon + background
     public void paint(Graphics g) {
-        g.setColor(Color.orange);
+        g.setColor(Color.white);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         if (monBallon!=null)
             monBallon.dessine(g);
