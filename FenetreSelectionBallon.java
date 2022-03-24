@@ -4,7 +4,7 @@ import javax.swing.* ;
 
 public class FenetreSelectionBallon extends JFrame implements ActionListener{
     
-    // Les Attributs (pour ne pas qu'ils soient des variables)
+    // Les Widgets à déclarer en dehors du constructeur (pour ne pas qu'ils soient des variables)
     private JTextField T1 ;
     private JTextField T2 ;
     private JButton B1 ;
@@ -18,7 +18,8 @@ public class FenetreSelectionBallon extends JFrame implements ActionListener{
         this.monTabBallon = monTabBallon ;
         this.setTitle("Selection du ballon");
         this.setSize(400, 400);
-        this.setLocation(300, 200);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         
