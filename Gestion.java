@@ -14,10 +14,10 @@ public class Gestion {
 
     Toolkit T=Toolkit.getDefaultToolkit();
     // Mettre le chemin d'accès des images avec un \\ à chaque dossier !
-    ba = T.getImage("C:\\Users\\manon\\Documents\\Mini-Projet\\Classes\\Basketball.png");
-    ha = T.getImage("C:\\Users\\manon\\Documents\\Mini-Projet\\Classes\\HandBall.png");
-    te = T.getImage("C:\\Users\\manon\\Documents\\Mini-Projet\\Classes\\Tennis.png");
-    vo = T.getImage("C:\\Users\\manon\\Documents\\Mini-Projet\\Classes\\Volley.png");
+    ba = T.getImage("BasketBall.png");
+    ha = T.getImage("HandBall.png");
+    te = T.getImage("Tennis.png");
+    vo = T.getImage("Volley.png");
 
     
     // Création d'un tableau de ballons
