@@ -1,31 +1,39 @@
 import java.awt.*;
 
-
 public class Gestion {
     public static void main (String [] args){
     
     // Position initiale
-    APoint p = new APoint (300, 100);
-    Image balle;
-    
+    APoint p = new APoint (0, 0);
+
+    // Images
+    Image ba;
+    Image ha;
+    Image te;
+    Image vo;
+
     Toolkit T=Toolkit.getDefaultToolkit();
-    balle = T.getImage("basket.png");
+    // Mettre le chemin d'accès des images avec un \\ à chaque dossier !
+    ba = T.getImage("C:\\Users\\manon\\Documents\\Mini-Projet\\Classes\\Basketball.png");
+    ha = T.getImage("C:\\Users\\manon\\Documents\\Mini-Projet\\Classes\\HandBall.png");
+    te = T.getImage("C:\\Users\\manon\\Documents\\Mini-Projet\\Classes\\Tennis.png");
+    vo = T.getImage("C:\\Users\\manon\\Documents\\Mini-Projet\\Classes\\Volley.png");
 
     
     // Création d'un tableau de ballons
-        Ballon[] tabBallon=new Ballon[4];
+    Ballon[] tabBallon=new Ballon[4];
         
         // On veut un ballon de basket
-        Ballon basket = new Ballon(600, 24.19,balle , p);
+        Ballon basket = new Ballon(600, 24.19, ba , p);
     
         // On veut un ballon de hand
-        Ballon hand = new Ballon(475, 19.1, balle, p);
+        Ballon hand = new Ballon(475, 19.1, ha, p);
     
         // On veut une balle de tennis
-        Ballon tennis = new Ballon(58.5, 6.68, balle, p);
+        Ballon tennis = new Ballon(58.5, 6.68, te, p);
     
         // On veut un ballon de volley
-        Ballon volley = new Ballon(280, 21, balle, p);
+        Ballon volley = new Ballon(280, 21, vo, p);
     
     // Remplissage du tableau par les ballons standards créés auparavant
         tabBallon[0]=basket;
@@ -34,8 +42,7 @@ public class Gestion {
         tabBallon[3]=volley;
         
     // Création de la fenêtre pour l'IHM
-    FenetreSelectionBallon maFrameSelectionBallon = new FenetreSelectionBallon(tabBallon);
-    FenetrePlotBallon maFrameAfficherFigure = new FenetrePlotBallon() ;
+    FenetreSelectionBallonCombo maFrameSelectionBallon = new FenetreSelectionBallonCombo(tabBallon);
     
     }
 }

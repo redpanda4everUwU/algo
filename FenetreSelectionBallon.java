@@ -75,7 +75,7 @@ public class FenetreSelectionBallon extends JFrame implements ActionListener{
         B2.addActionListener(this);
         
         // Deuxième fenêtre, question 5.3.1.3
-        maFenetrePlot = new FenetrePlotBallon();
+        
         this.setVisible(true);
         
         this.setVisible(true);    // Pour rendre la fenêtre visible, on le met à la fin pour que tout s'affiche d'un coup ^^

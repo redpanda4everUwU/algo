@@ -1,4 +1,4 @@
-
+import javax.swing.*;
 import java.awt.*;
 
 
@@ -12,7 +12,7 @@ public class Ballon {
     private Image image;
     // Constructeur
 
-    public Ballon (double m, double r,Image i, APoint p){
+    public Ballon (double m, double r, Image i, APoint p){
         this.masse = m ;
         this.rayon = r ;
         this.image = i ;
@@ -35,12 +35,16 @@ public class Ballon {
     
     // Méthodes
     
-    public void dessine (Graphics g){
-        g.setColor(Color.BLUE);
-        g.drawImage(this.image,0,0,null);
-        System.out.println(g.drawImage(this.image,0,0,null));
-        g.fillOval((int) (this.position.x - this.rayon), (int) (this.position.y - this.rayon), (int) (2*this.rayon), (int) (2*this.rayon));
+    public void dessine(Graphics g){
+        g.drawImage(image,960,850,null);
+       // System.out.println(g.drawImage(image,960,850,null));
+        //g.fillOval((int) (this.position.x - this.rayon), (int) (this.position.y - this.rayon), (int) (2*this.rayon), (int) (2*this.rayon));
 
     }
+
+    public void deplaceY(int deltaY){
+        position.y+=deltaY;
+    }
+
 }
 
