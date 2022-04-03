@@ -9,6 +9,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 	public Image background;
     private Timer monChrono;
     private int temps;
+    private JButton monBallonEnPositionInitial;
 
 	public FenetrePlotBallon(Ballon b) {
 		monBallon = b;
@@ -18,13 +19,22 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 		this.setLocation(0, 0);
 		this.setResizable(false) ;
 		
-		
+
 		Toolkit T = Toolkit.getDefaultToolkit();
 		background = T.getImage("basket_ball_game_background.jpg");
 		
 		JPanel test = new JPanel();
 		test.setLayout(null);
 		test.setBounds(0,0,1920,1080);
+        
+        // Bouton pour pouvoir cliquer sur le ballon, on veut que le bouton ne soit pas visible mais qu'on puisse intéragir avec
+        monBallonEnPositionInitial=new JButton();
+        //en théorie juste mais les rayons ne correspondent pas à l'image
+        monBallonEnPositionInitial.setBounds((int)b.getPosition().x, (int)b.getPosition().y, (int)b.getRayon(), (int)b.getRayon());
+        monBallonEnPositionInitial.setVisible(true);
+        monBallonEnPositionInitial.addMouseListener(this);
+        monBallonEnPositionInitial.addMouseMotionListener(this);
+        test.add(monBallonEnPositionInitial);
 
 		// Déclaration et création du chronomètre
         monChrono = new Timer(1000,this);
@@ -51,7 +61,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         //repaint();
         
 		if (monBallon!=null){
-            g.drawImage(monBallon.getDessin(), 960, 850, null);
+            g.drawImage(monBallon.getDessin(), (int)monBallon.getPosition().x, (int)monBallon.getPosition().y, null);
            //monBallon.dessine(g);
            //repaint(); 
 		}
@@ -63,13 +73,13 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         monChrono.start();
     }
 	
-    // Timer avec déplacement qui... ne fonctionne pas encore
+    // Timer avec déplacement qui fonctionne mais à 2frames per second
 	public void actionPerformed(ActionEvent e){
         temps += 1000; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
         System.out.println("Mouvement en cours depuis "+temps+ "ms");
         // this.setTitle("IHM Courbe - Graphisme / temps : "+temps); Je sais pas à quoi ça sert 
         if (monBallon!=null)
-            monBallon.deplaceY(10);
+            //monBallon.deplaceY(10);
         repaint();
     }
 

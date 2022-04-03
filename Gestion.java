@@ -4,7 +4,7 @@ public class Gestion {
     public static void main (String [] args){
     
     // Position initiale
-    APoint p = new APoint (0, 0);
+    APoint p = new APoint (960, 850);
 
     // Images
     Image ba;
@@ -24,7 +24,7 @@ public class Gestion {
     Ballon[] tabBallon=new Ballon[4];
         
         // On veut un ballon de basket
-        Ballon basket = new Ballon(600, 24.19, ba , p);
+        Ballon basket = new Ballon(600, 24.19, ba, p);
     
         // On veut un ballon de hand
         Ballon hand = new Ballon(475, 19.1, ha, p);
