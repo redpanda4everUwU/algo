@@ -33,6 +33,9 @@ public class Ballon {
         return this.image ;
     }
     
+    public APoint getPosition(){
+        return this.position;
+    }
     // Méthodes
     
     public void dessine(Graphics g){

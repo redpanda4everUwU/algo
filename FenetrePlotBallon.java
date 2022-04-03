@@ -53,7 +53,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener{
 		if (monBallon!=null){
             g.drawImage(monBallon.getDessin(), 960, 850, null);
            //monBallon.dessine(g);
-           repaint(); 
+           //repaint(); 
 		}
        // repaint(); 
 	}
