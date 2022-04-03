@@ -75,7 +75,6 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 	
     // Timer avec déplacement qui fonctionne
 	public void actionPerformed(ActionEvent e){
-        while(temps<5000);
         temps += 50; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
         System.out.println("Mouvement en cours depuis "+temps+ "ms");
         // this.setTitle("IHM Courbe - Graphisme / temps : "+temps); Je sais pas à quoi ça sert 
