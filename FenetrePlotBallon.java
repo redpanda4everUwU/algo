@@ -37,7 +37,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         test.add(monBallonEnPositionInitial);
 
 		// Déclaration et création du chronomètre
-        monChrono = new Timer(1000,this);
+        monChrono = new Timer(50,this);
         // Lancement du chronomètre
         monChrono.start();
 
@@ -73,13 +73,14 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         monChrono.start();
     }
 	
-    // Timer avec déplacement qui fonctionne mais à 2frames per second
+    // Timer avec déplacement qui fonctionne
 	public void actionPerformed(ActionEvent e){
-        temps += 1000; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
+        while(temps<5000);
+        temps += 50; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
         System.out.println("Mouvement en cours depuis "+temps+ "ms");
         // this.setTitle("IHM Courbe - Graphisme / temps : "+temps); Je sais pas à quoi ça sert 
         if (monBallon!=null)
-            //monBallon.deplaceY(10);
+            monBallon.deplaceY(10);
         repaint();
     }
 
