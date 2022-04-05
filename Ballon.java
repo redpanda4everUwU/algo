@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.awt.*;
 
 
@@ -36,6 +35,7 @@ public class Ballon {
     public APoint getPosition(){
         return this.position;
     }
+    
     // Méthodes
     
     public void dessine(Graphics g){

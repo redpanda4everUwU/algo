@@ -47,7 +47,7 @@ public class FenetreSelectionBallonCombo extends JFrame implements ActionListene
         CB.setBounds(110, 70, 150, 60);
 		c.add(CB);
 		CB.addActionListener(this);
-		CB.setEditable(true); 
+		CB.setEditable(false); 
 		
 		// Deuxième fenêtre
 		//maFenetrePlot = new FenetrePlotBallon();

@@ -7,7 +7,7 @@ public class Trajectoire {
 
 public Trajectoire(Ballon b){
         Bal=b;
-        //  P=Bal.getPostion();
+        P=Bal.getPosition();
         // M0=Bal.getMotion(); dfgz
         // recalcul d'angle avec variation de x et y sur la postion et la postion précedente ? 
 } 

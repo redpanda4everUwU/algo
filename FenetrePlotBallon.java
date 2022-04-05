@@ -30,7 +30,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         // Bouton pour pouvoir cliquer sur le ballon, on veut que le bouton ne soit pas visible mais qu'on puisse intéragir avec
         monBallonEnPositionInitial=new JButton();
         //en théorie juste mais les rayons ne correspondent pas à l'image
-        monBallonEnPositionInitial.setBounds((int)b.getPosition().x, (int)b.getPosition().y, (int)b.getRayon(), (int)b.getRayon());
+        monBallonEnPositionInitial.setBounds((int)b.getPosition().x, (int)b.getPosition().y, (int)b.getRayon()*2, (int)b.getRayon()*2);
         monBallonEnPositionInitial.setVisible(true);
         monBallonEnPositionInitial.addMouseListener(this);
         monBallonEnPositionInitial.addMouseMotionListener(this);
@@ -79,7 +79,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         System.out.println("Mouvement en cours depuis "+temps+ "ms");
         // this.setTitle("IHM Courbe - Graphisme / temps : "+temps); Je sais pas à quoi ça sert 
         if (monBallon!=null)
-            monBallon.deplaceY(10);
+            //monBallon.deplaceY(10);
         repaint();
     }
 
