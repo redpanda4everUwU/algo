@@ -1,19 +1,23 @@
+
+
 public class Trajectoire {
 
     APoint P; 
     Ballon Bal;
-    //Motion M0; la vitesse initiale et l'angle 
+
+    //Motion Mo; la vitesse initiale et l'angle 
 
 
 public Trajectoire(Ballon b){
         Bal=b; 
         P=Bal.getPosition();
-        // M0=Bal.getMotion(); 
-        // recalcul d'angle avec variation de x et y sur la position et la position précedente ? 
+        // Mvec variation de x et Mo=Bal.getMotion(); 
+        // recalcul d'angle ay sur la position et la position précedente ? 
 
-        if(P.y<= 0){
-            Bal.deplaceY(-10);
-        }
+        //P.x=V0*cos(Motion.theta)*monTimer.getTimer();
+        //P.y=-V0*9.81*.0.5*Math.pow(monTimer.getTimer(),2)+V0*sin(Motion.theta)*monTimer.getTimer();
+        //delta bal.getPosition par rapport à P (ancienne et nouvelles coordonnées pour obtenir theta)
+        //Math.atan2(y, x) à étudier
 } 
 
 
