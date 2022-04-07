@@ -1,4 +1,7 @@
 import javax.swing.* ;
+
+import javafx.scene.layout.StackPane;
+
 import java.awt.*;
 import java.awt.event.* ;
 
@@ -37,6 +40,9 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         monBallonEnPositionInitial.addMouseListener(this);
         monBallonEnPositionInitial.addMouseMotionListener(this);
         test.add(monBallonEnPositionInitial);
+
+        //StackPane stackPane = new StackPane() ;
+        //stackPane.getChildren().addAll(b, monBallonEnPositionInitial); 
 
 		// Déclaration et création du chronomètre
         monChrono = new Timer(50,this);

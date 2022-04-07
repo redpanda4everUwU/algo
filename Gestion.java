@@ -24,16 +24,16 @@ public class Gestion {
     Ballon[] tabBallon=new Ballon[4];
         
         // On veut un ballon de basket
-        Ballon basket = new Ballon(600, 24.19, ba, p);
+        Ballon basket = new Ballon(600, 40, ba, p);
     
         // On veut un ballon de hand
-        Ballon hand = new Ballon(475, 19.1, ha, p);
+        Ballon hand = new Ballon(475, 25, ha, p);
     
         // On veut une balle de tennis
-        Ballon tennis = new Ballon(58.5, 6.68, te, p);
+        Ballon tennis = new Ballon(58.5, 8, te, p);
     
         // On veut un ballon de volley
-        Ballon volley = new Ballon(280, 21, vo, p);
+        Ballon volley = new Ballon(280, 50, vo, p);
     
     // Remplissage du tableau par les ballons standards créés auparavant
         tabBallon[0]=basket;

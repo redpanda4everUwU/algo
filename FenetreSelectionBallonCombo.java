@@ -10,13 +10,14 @@ public class FenetreSelectionBallonCombo extends JFrame implements ActionListene
 	private JComboBox CB ;
 	private Ballon[] monTabBallon ;
 	private FenetrePlotBallon maFenetrePlot ; 
+	private JLabel regles ;
 	
 	// Constructeur
 	public FenetreSelectionBallonCombo(Ballon[] monTabBallon){
 		
 		this.monTabBallon = monTabBallon ;
 		this.setTitle("Selection du ballon");
-		this.setSize(400, 200);
+		this.setSize(400, 270);
 		this.setLocation(300, 200);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,15 +32,32 @@ public class FenetreSelectionBallonCombo extends JFrame implements ActionListene
 		// Conteneur main
 		JPanel c = new JPanel() ;
 		c.setLayout(null);
-		c.setBounds(10,10,380,280);
+		c.setBounds(10,10,400,270);
 		c.setBackground(maCouleur);
 		this.add(c);
 		
-		// Texte 1 
-		JLabel E = new JLabel("Sélectionner le ballon de votre choix");
+		// Texte choix ballon
+		JLabel E = new JLabel("Sélectionner le ballon de votre choix :");
 		E.setSize(360,30);
 		E.setLocation(90,25);
 		c.add(E);
+
+		// Textes règle
+		regles = new JLabel("Votre objectif : marquez le plus de panier !!");
+		regles.setSize(400,40);
+		regles.setLocation(70,145);
+		c.add(regles);
+
+		regles = new JLabel("Clickez sur le ballon et gérez le vecteur avec la souris.");
+		regles.setSize(400,40);
+		regles.setLocation(30,160);
+		c.add(regles);
+
+		regles = new JLabel("Bonne chance <3");
+		regles.setSize(400,40);
+		regles.setLocation(135,175);
+		c.add(regles);
+		
 		
 		// Choix proposition ComboBox
 		String types[]={"Basket","Hand","Tennis","Volley"};        
