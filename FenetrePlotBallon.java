@@ -79,7 +79,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         System.out.println("Mouvement en cours depuis "+temps+ "ms");
         // this.setTitle("IHM Courbe - Graphisme / temps : "+temps); Je sais pas à quoi ça sert 
         if (monBallon!=null)
-            monBallon.deplaceY(10); /* comme ça c'est ingérable parceque ça fait ça peut importe ce que 
+            monBallon.deplaceY(0); /* comme ça c'est ingérable parceque ça fait ça peut importe ce que 
             t'écris après donc pour l'évolution de la courbe c'est infaisable*/
         repaint();
     
