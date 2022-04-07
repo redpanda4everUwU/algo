@@ -12,7 +12,6 @@
     }
         
     // Méthodes  
-             //sjshs
     public double distance( APoint otherPoint ) {
         double dx = x - otherPoint.x;
         double dy = y - otherPoint.y;

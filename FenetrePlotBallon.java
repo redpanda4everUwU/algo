@@ -10,6 +10,8 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     private Timer monChrono;
     private int temps;
     private JButton monBallonEnPositionInitial;
+    private APoint pos;
+    private double v0;
 
 	public FenetrePlotBallon(Ballon b) {
 		monBallon = b;
@@ -76,7 +78,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     // Timer avec déplacement qui fonctionne
 	public void actionPerformed(ActionEvent e){
         temps += 50; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
-        System.out.println("Mouvement en cours depuis "+temps+ "ms");
+        //System.out.println("Mouvement en cours depuis "+temps+ "ms");
         // this.setTitle("IHM Courbe - Graphisme / temps : "+temps); Je sais pas à quoi ça sert 
         if (monBallon!=null)
             monBallon.deplaceY(0); /* comme ça c'est ingérable parceque ça fait ça peut importe ce que 
@@ -94,8 +96,10 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+        if(e.getSource()==monBallonEnPositionInitial){
+            APoint p = new APoint(e.getPoint().getX(), e.getPoint().getY());
+            v0 = pos.distance(p); 
+        }
     }
 
 
@@ -115,8 +119,9 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 
     @Override
     public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+        if(e.getSource()==monBallonEnPositionInitial){
+            pos = new APoint(e.getPoint().getX(), e.getPoint().getY());
+        }
     }
 
 
