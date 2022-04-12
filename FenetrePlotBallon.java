@@ -1,7 +1,4 @@
 import javax.swing.* ;
-
-import javafx.scene.layout.StackPane;
-
 import java.awt.*;
 import java.awt.event.* ;
 
@@ -34,15 +31,12 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         
         // Bouton pour pouvoir cliquer sur le ballon, on veut que le bouton ne soit pas visible mais qu'on puisse intéragir avec
         monBallonEnPositionInitial=new JButton();
-        //en théorie juste mais les rayons ne correspondent pas à l'image
+        // En théorie juste mais les rayons ne correspondent pas à l'image
         monBallonEnPositionInitial.setBounds((int)b.getPosition().x, (int)b.getPosition().y, (int)b.getRayon()*2, (int)b.getRayon()*2);
         monBallonEnPositionInitial.setVisible(true);
         monBallonEnPositionInitial.addMouseListener(this);
         monBallonEnPositionInitial.addMouseMotionListener(this);
         test.add(monBallonEnPositionInitial);
-
-        //StackPane stackPane = new StackPane() ;
-        //stackPane.getChildren().addAll(b, monBallonEnPositionInitial); 
 
 		// Déclaration et création du chronomètre
         monChrono = new Timer(50,this);
@@ -66,15 +60,10 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 	// Dessiner ballon
 	public void paint(Graphics g) {
         g.drawImage(background, 0,0, null);
-        //repaint();
         
 		if (monBallon!=null){
-           g.drawImage(monBallon.getDessin(), (int)monBallon.getPosition().x+getInsets().left, (int)monBallon.getPosition().y+getInsets().top, null);
-           //g.drawImage(monBallon.getDessin(), (int)monBallon.getPosition().x, (int)monBallon.getPosition().y, null);
-           //monBallon.dessine(g);
-           //repaint(); 
+           g.drawImage(monBallon.getDessin(), (int)monBallon.getPosition().x+getInsets().left, (int)monBallon.getPosition().y+getInsets().top, null); 
 		}
-       // repaint(); 
 	}
 
     // Lancement du ballon
@@ -85,8 +74,6 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     // Timer avec déplacement qui fonctionne
 	public void actionPerformed(ActionEvent e){
         temps += 50; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
-        //System.out.println("Mouvement en cours depuis "+temps+ "ms");
-        // this.setTitle("IHM Courbe - Graphisme / temps : "+temps); Je sais pas à quoi ça sert 
         if (monBallon!=null)
             monBallon.deplaceY(0); /* comme ça c'est ingérable parceque ça fait ça peut importe ce que 
             t'écris après donc pour l'évolution de la courbe c'est infaisable*/
@@ -151,45 +138,4 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         // TODO Auto-generated method stub
         
     }
-	
 }	
-/*
-import javax.swing.* ;
-import java.awt.*;
- 
-
-public class FenetrePlotBallon extends JFrame implements ActionListener{
-    
-    private Ballon monBallon ;
-
-    public FenetrePlotBallon() {
-        this.setTitle("Ballon");
-        this.setSize(800, 800);
-        this.setLocation(800, 200);
-        this.setResizable(false) ;
-        this.setVisible(false);
-    }
-    
-    public void choixBallon (Ballon unBallon){
-        monBallon = unBallon ;
-        repaint();
-    }
-    
-    // Effacer ballon
-    public void effacerBallon(Ballon unBallon){
-        monBallon = null ;
-        repaint();
-    }
-    
-    // Afficher la fenêtre de jeu : dessiner ballon + background
-    public void paint(Graphics g) {
-        g.setColor(Color.white);
-        g.fillRect(0, 0, this.getWidth(), this.getHeight());
-        if (monBallon!=null)
-            monBallon.dessine(g);
-        
-        }
-    
-    
-}    
-*/

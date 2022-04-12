@@ -40,9 +40,6 @@ public class Ballon {
     
     public void dessine(Graphics g){
         g.drawImage(image,0,0,null);
-       // System.out.println(g.drawImage(image,960,850,null));
-        //g.fillOval((int) (this.position.x - this.rayon), (int) (this.position.y - this.rayon), (int) (2*this.rayon), (int) (2*this.rayon));
-
     }
 
     public void deplaceY(int deltaY){
