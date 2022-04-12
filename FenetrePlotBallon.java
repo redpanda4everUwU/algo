@@ -1,6 +1,10 @@
 import javax.swing.* ;
 import java.awt.*;
 import java.awt.event.* ;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.awt.geom.AffineTransform;
+
 
 public class FenetrePlotBallon extends JFrame implements ActionListener, MouseListener, MouseMotionListener{
 	
@@ -59,11 +63,21 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 	
 	// Dessiner ballon
 	public void paint(Graphics g) {
-        g.drawImage(background, 0,0, null);
+        Graphics2D g2 = (Graphics2D) g;
+        BufferedImage imagePreparation = new BufferedImage(1920, 1080, BufferedImage.TYPE_INT_RGB);
+
+        Graphics2D  imagePreparationGraphics = (Graphics2D) imagePreparation.getGraphics();
+
+        AffineTransform reset = imagePreparationGraphics.getTransform();
+        imagePreparationGraphics.drawImage(background, 0,0, null);
+
+       // g.drawImage(background, 0,0, null);
         
 		if (monBallon!=null){
-           g.drawImage(monBallon.getDessin(), (int)monBallon.getPosition().x+getInsets().left, (int)monBallon.getPosition().y+getInsets().top, null); 
+           imagePreparationGraphics.drawImage(monBallon.getDessin(), (int)monBallon.getPosition().x+getInsets().left, (int)monBallon.getPosition().y+getInsets().top, null); 
 		}
+        imagePreparationGraphics.setTransform(reset);
+        g.drawImage(imagePreparation, 0, 0, this);
 	}
 
     // Lancement du ballon
