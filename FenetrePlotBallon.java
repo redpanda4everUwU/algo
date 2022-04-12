@@ -69,7 +69,8 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         //repaint();
         
 		if (monBallon!=null){
-            g.drawImage(monBallon.getDessin(), (int)monBallon.getPosition().x, (int)monBallon.getPosition().y, null);
+           g.drawImage(monBallon.getDessin(), (int)monBallon.getPosition().x+getInsets().left, (int)monBallon.getPosition().y+getInsets().top, null);
+           //g.drawImage(monBallon.getDessin(), (int)monBallon.getPosition().x, (int)monBallon.getPosition().y, null);
            //monBallon.dessine(g);
            //repaint(); 
 		}
