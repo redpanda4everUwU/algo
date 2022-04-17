@@ -4,7 +4,7 @@ public class Gestion {
     public static void main (String [] args){
     
     // Position initiale
-    APoint p = new APoint (900, 850);
+    APoint p = new APoint (900, 500);
 
     // Images
     Image ba;

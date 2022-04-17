@@ -16,6 +16,8 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     private JButton monBallonEnPositionInitial;
     private APoint pos;
     private double v0;
+    private double theta; 
+    private Trajectoire Traj;
 
 	public FenetrePlotBallon(Ballon b) {
 		monBallon = b;
@@ -89,8 +91,8 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 	public void actionPerformed(ActionEvent e){
         temps += 50; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
         if (monBallon!=null)
-            monBallon.deplaceY(0); /* comme ça c'est ingérable parceque ça fait ça peut importe ce que 
-            t'écris après donc pour l'évolution de la courbe c'est infaisable*/
+            monBallon.deplacement(Traj.P);
+             
         repaint();
     
         /*Trajectoire Traj= new Trajectoire(monBallon);
@@ -106,7 +108,11 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     public void mouseDragged(MouseEvent e) {
         if(e.getSource()==monBallonEnPositionInitial){
             APoint p = new APoint(e.getPoint().getX(), e.getPoint().getY());
-            v0 = pos.distance(p); 
+            v0 = pos.distance(p);
+            theta=Math.atan2(p.y-pos.y,p.x-pos.x); 
+            System.out.println(v0 +"et" +theta);
+            Traj=new Trajectoire(monBallon,v0,theta,temps);
+            
         }
     }
 
@@ -135,6 +141,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        
         // TODO Auto-generated method stub
         
     }

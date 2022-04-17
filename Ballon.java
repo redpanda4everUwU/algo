@@ -7,7 +7,7 @@ public class Ballon {
     
     private double masse ;
     private double rayon ;
-    private APoint position ;
+    public APoint position ;
     private Image image;
     // Constructeur
 
@@ -42,8 +42,8 @@ public class Ballon {
         g.drawImage(image,0,0,null);
     }
 
-    public void deplaceY(int deltaY){
-        position.y+=deltaY;
+    public void deplacement(APoint p){
+        position=p; 
     }
 
 }
