@@ -16,8 +16,8 @@ public Trajectoire(Ballon b,double v0, double theta,double temps){
         P=Bal.getPosition();
         Pa=P;// on garde en mémoire la position
  
-        P.x=P.x-v0*Math.cos(theta)*temps;
-        P.y=P.y+v0*9.81*0.5*Math.pow(temps,2)+v0*Math.sin(theta)*temps;
+        P.x=Pa.x+v0*Math.cos(theta)*temps;
+        P.y=-Pa.y+9.81*0.5*Math.pow(temps,2)-v0*Math.sin(theta)*temps;
         //System.out.println(12);
         theta=Math.atan2(P.y-Pa.y,P.x-Pa.x) ;//recalcul de theta avec la nouvelle et l'ancienne position
     //}

@@ -49,8 +49,8 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         monBallonEnPositionInitial.addMouseMotionListener(this);
         disJPanel.add(monBallonEnPositionInitial);
 
-
         this.addMouseListener(this);
+        
 		// Déclaration et création du chronomètre
         monChrono = new Timer(50,this);
         // Lancement du chronomètre
@@ -95,8 +95,9 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 
     // Timer avec déplacement qui fonctionne
 	public void actionPerformed(ActionEvent e){
-        temps += 0.1; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
+        temps += 1; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
         if (lancer==true){
+            //à partir du moment où le ballon est lancé on calcule la position du ballon et on déplace le ballon à la position correspondante
             Traj=new Trajectoire(monBallon, v0, theta, temps);
             monBallon.deplacement(Traj.P);
             System.out.println(temps);
