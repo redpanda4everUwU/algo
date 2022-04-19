@@ -97,8 +97,10 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 	public void actionPerformed(ActionEvent e){
         temps += 0.1; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
         if (lancer==true){
+            Traj=new Trajectoire(monBallon, v0, theta, temps);
             monBallon.deplacement(Traj.P);
             System.out.println(temps);
+            System.out.println(monBallon.getPosition());
         }
         repaint();        
     }
@@ -111,7 +113,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
             v0 = pos.distance(p)*0.05;
             theta=Math.atan2(p.y-pos.y,p.x-pos.x); 
             System.out.println(v0 +"et" +theta);
-            Traj=new Trajectoire(monBallon,v0,theta,temps);
+            //Traj=new Trajectoire(monBallon,v0,theta,temps);
         }
     }
 
