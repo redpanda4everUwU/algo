@@ -43,7 +43,8 @@ public class Ballon {
     }
 
     public void deplacement(APoint p){
-        position=p; 
+        position.x=p.x;
+        position.y=p.y; 
     }
 
 }
