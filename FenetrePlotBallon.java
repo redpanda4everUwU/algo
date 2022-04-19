@@ -12,20 +12,23 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 	private Ballon monBallon ;
 	public Image background;
     private Timer monChrono;
-    private int temps;
+    private double temps;
     private JButton monBallonEnPositionInitial;
     private APoint pos;
     private double v0;
     private double theta; 
     private Trajectoire Traj;
+    private boolean lancer;
 
 	public FenetrePlotBallon(Ballon b) {
 		monBallon = b;
-        temps = 0 ;
+        temps = 0;
+        v0=0;
+        lancer=false;
 		this.setTitle("Ballon");
 		this.setSize(1920, 1080);
 		this.setLocation(0, 0);
-		this.setResizable(false) ;
+		this.setResizable(false);
 		
 
 		Toolkit T = Toolkit.getDefaultToolkit();
@@ -37,17 +40,21 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         
         // Bouton pour pouvoir cliquer sur le ballon, on veut que le bouton ne soit pas visible mais qu'on puisse intéragir avec
         monBallonEnPositionInitial=new JButton();
-        // En théorie juste mais les rayons ne correspondent pas à l'image
         monBallonEnPositionInitial.setBounds((int)b.getPosition().x, (int)b.getPosition().y, (int)b.getRayon()*2, (int)b.getRayon()*2);
         monBallonEnPositionInitial.setVisible(true);
+        monBallonEnPositionInitial.setOpaque(false);
+        monBallonEnPositionInitial.setContentAreaFilled(false);
+        monBallonEnPositionInitial.setBorderPainted(false);
         monBallonEnPositionInitial.addMouseListener(this);
         monBallonEnPositionInitial.addMouseMotionListener(this);
         disJPanel.add(monBallonEnPositionInitial);
 
+
+        this.addMouseListener(this);
 		// Déclaration et création du chronomètre
         monChrono = new Timer(50,this);
         // Lancement du chronomètre
-        monChrono.start();
+        //monChrono.start();
 
 		this.add(disJPanel);
 		disJPanel.setVisible(true);
@@ -55,7 +62,6 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 		repaint();
 		
 	}
-	
 	
 	// Effacer ballon
 	public void effacerBallon(Ballon unBallon){
@@ -82,25 +88,19 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         g.drawImage(imagePreparation, 0, 0, this);
 	}
 
-    // Lancement du ballon
+    // Lancement du chronomètre
     public void lancement(){
         monChrono.start();
     }
-	
+
     // Timer avec déplacement qui fonctionne
 	public void actionPerformed(ActionEvent e){
-        temps += 50; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
-        if (monBallon!=null)
+        temps += 0.1; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
+        if (lancer==true){
             monBallon.deplacement(Traj.P);
-             
-        repaint();
-    
-        /*Trajectoire Traj= new Trajectoire(monBallon);
-        if (monBallon.getPosition().y>=900){
-             monBallon.deplaceY(-50);
-        }*/
-        
-        
+            System.out.println(temps);
+        }
+        repaint();        
     }
 
 
@@ -108,11 +108,10 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     public void mouseDragged(MouseEvent e) {
         if(e.getSource()==monBallonEnPositionInitial){
             APoint p = new APoint(e.getPoint().getX(), e.getPoint().getY());
-            v0 = pos.distance(p);
+            v0 = pos.distance(p)*0.05;
             theta=Math.atan2(p.y-pos.y,p.x-pos.x); 
             System.out.println(v0 +"et" +theta);
             Traj=new Trajectoire(monBallon,v0,theta,temps);
-            
         }
     }
 
@@ -141,9 +140,11 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        
-        // TODO Auto-generated method stub
-        
+        //lancement du ballon
+        //On lance à t=0
+        temps=0;
+        lancer=true;
+        System.out.println(monBallon.getPosition());
     }
 
 
