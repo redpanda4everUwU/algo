@@ -31,9 +31,9 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 		Toolkit T = Toolkit.getDefaultToolkit();
 		background = T.getImage("basket_ball_game_background.jpg");
 		
-		JPanel test = new JPanel();
-		test.setLayout(null);
-		test.setBounds(0,0,1920,1080);
+		JPanel disJPanel = new JPanel();
+		disJPanel.setLayout(null);
+		disJPanel.setBounds(0,0,1920,1080);
         
         // Bouton pour pouvoir cliquer sur le ballon, on veut que le bouton ne soit pas visible mais qu'on puisse intéragir avec
         monBallonEnPositionInitial=new JButton();
@@ -42,15 +42,15 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         monBallonEnPositionInitial.setVisible(true);
         monBallonEnPositionInitial.addMouseListener(this);
         monBallonEnPositionInitial.addMouseMotionListener(this);
-        test.add(monBallonEnPositionInitial);
+        disJPanel.add(monBallonEnPositionInitial);
 
 		// Déclaration et création du chronomètre
         monChrono = new Timer(50,this);
         // Lancement du chronomètre
         monChrono.start();
 
-		this.add(test);
-		test.setVisible(true);
+		this.add(disJPanel);
+		disJPanel.setVisible(true);
 		this.setVisible(true);
 		repaint();
 		
