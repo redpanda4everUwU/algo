@@ -66,6 +66,7 @@ public class FenetreResultat extends JFrame implements ActionListener {
        if (e.getSource()==menu){
            System.out.println("Click sur Menu");
            leMenu.setVisible(true);
+           
        }
    }
 }

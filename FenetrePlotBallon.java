@@ -52,7 +52,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         this.addMouseListener(this);
         
 		// Déclaration et création du chronomètre
-        monChrono = new Timer(50,this);
+        monChrono = new Timer(100,this);
         // Lancement du chronomètre
         //monChrono.start();
 
@@ -111,7 +111,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     public void mouseDragged(MouseEvent e) {
         if(e.getSource()==monBallonEnPositionInitial){
             APoint p = new APoint(e.getPoint().getX(), e.getPoint().getY());
-            v0 = pos.distance(p)*0.05;
+            v0 = pos.distance(p)*0.10;
             theta=Math.atan2(p.y-pos.y,p.x-pos.x); 
             System.out.println(v0 +"et" +theta);
             //Traj=new Trajectoire(monBallon,v0,theta,temps);
