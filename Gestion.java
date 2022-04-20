@@ -11,6 +11,7 @@ public class Gestion {
     Image ha;
     Image te;
     Image vo;
+    int score=0;
 
     Toolkit T=Toolkit.getDefaultToolkit();
     // Mettre le chemin d'accès des images avec un \\ à chaque dossier !
@@ -44,5 +45,7 @@ public class Gestion {
     // Création de la fenêtre pour l'IHM
     FenetreSelectionBallonCombo maFrameSelectionBallon = new FenetreSelectionBallonCombo(tabBallon);
     
+    FenetreResultat maFrameResultat = new FenetreResultat(score);
+
     }
 }
