@@ -15,9 +15,9 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     private double temps;
     private JButton monBallonEnPositionInitial;
     private APoint pos;
+    public APoint P;
     private double v0;
-    private double theta; 
-    private Trajectoire Traj;
+    private double theta;
     private boolean lancer;
 
 	public FenetrePlotBallon(Ballon b) {
@@ -52,7 +52,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         this.addMouseListener(this);
         
 		// Déclaration et création du chronomètre
-        monChrono = new Timer(100,this);
+        monChrono = new Timer(75,this);
 
 		this.add(disJPanel);
 		disJPanel.setVisible(true);
@@ -84,6 +84,14 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 		}
         imagePreparationGraphics.setTransform(reset);
         g.drawImage(imagePreparation, 0, 0, this);
+
+        /*if(enclenche){
+            for(int i=0; i<10; i++){
+                Traj.P.x=Traj.P.x+v0*Math.cos(theta)*(temps+i);
+                Traj.P.y=0.5*9.81*Math.pow((temps+i), 2)-v0*Math.sin(theta)*(temps+i)+Traj.P.y;
+                g.fillOval((int)Traj.P.x, (int)Traj.P.y, 10, 10);
+            }
+        }*/
 	}
 
     // Lancement du chronomètre
@@ -91,13 +99,20 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         monChrono.start();
     }
 
+    public void Trajectoire(Ballon b, double v0, double theta, double temps){
+        P=b.getPosition();
+
+        P.x=P.x+v0*Math.cos(theta)*temps;
+        P.y=0.5*9.81*Math.pow(temps, 2)-v0*Math.sin(theta)*temps+P.y;
+    } 
+
     // Timer avec déplacement qui fonctionne
 	public void actionPerformed(ActionEvent e){
-        temps += 1; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
+        temps += 0.5; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
         if (lancer==true){
             //à partir du moment où le ballon est lancé on calcule la position du ballon et on déplace le ballon à la position correspondante
-            Traj=new Trajectoire(monBallon, v0, theta, temps);
-            monBallon.deplacement(Traj.P);
+            Trajectoire(monBallon, v0, theta, temps);
+            monBallon.deplacement(P);
             System.out.println(temps);
             System.out.println(monBallon.getPosition());
             if(monBallon.getPosition().y>800){
@@ -113,8 +128,8 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         if(e.getSource()==monBallonEnPositionInitial){
             APoint p = new APoint(e.getPoint().getX(), e.getPoint().getY());
             v0 = pos.distance(p)*0.10;
-            theta=Math.atan2(p.y-pos.y,p.x-pos.x); 
-            System.out.println(v0 +"et" +theta);
+            theta=-Math.atan2(p.y-pos.y,p.x-pos.x); 
+            System.out.println(v0 +"et" +theta);       
             //Traj=new Trajectoire(monBallon,v0,theta,temps);
         }
     }
