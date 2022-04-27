@@ -1,8 +1,7 @@
 import java.util.Random ; // Pour les couleurs aléatoires
 import javax.swing.* ;
 import java.awt.*;
-import java.awt.event.*; 
-import javax.swing.* ;
+import java.awt.event.*;
 
 public class FenetreSelectionBallonCombo extends JFrame implements ActionListener{
    
@@ -66,9 +65,7 @@ public class FenetreSelectionBallonCombo extends JFrame implements ActionListene
 	   c.add(CB);
 	   CB.addActionListener(this);
 	   CB.setEditable(false); 
-	   
-	   // Deuxième fenêtre
-	   //maFenetrePlot = new FenetrePlotBallon();
+
 	   this.setVisible(true);
 	   
    }
@@ -77,7 +74,6 @@ public class FenetreSelectionBallonCombo extends JFrame implements ActionListene
    public void actionPerformed(ActionEvent e) {
 		   System.out.println(this.monTabBallon);
 		   int choix = CB.getSelectedIndex();
-		   System.out.println(CB.getSelectedIndex());
 		   FenetrePlotBallon maFenetrePlot = new FenetrePlotBallon(monTabBallon[choix]);
 		   maFenetrePlot.lancement();
 	   }

@@ -9,7 +9,7 @@ import java.awt.geom.AffineTransform;
 public class FenetrePlotBallon extends JFrame implements ActionListener, MouseListener, MouseMotionListener{
 	
     // Les attributs
-	private Ballon monBallon ;
+	private Ballon monBallon;
 	public Image background;
     private Timer monChrono;
     private double temps;
@@ -27,10 +27,12 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         v0=0;
         score=0;
         lancer=false;
+        
 		this.setTitle("Ballon");
 		this.setSize(1920, 1080);
 		this.setLocation(0, 0);
 		this.setResizable(false);
+        this.addMouseListener(this);
 		
 
 		Toolkit T = Toolkit.getDefaultToolkit();
@@ -40,27 +42,28 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 		disJPanel.setLayout(null);
 		disJPanel.setBounds(0,0,1920,1080);
         
-        // Bouton pour pouvoir cliquer sur le ballon, on veut que le bouton ne soit pas visible mais qu'on puisse intéragir avec
+        // Bouton pour pouvoir cliquer sur le ballon : on veut que le bouton ne soit pas visible mais qu'on puisse intéragir avec
         monBallonEnPositionInitial=new JButton();
         monBallonEnPositionInitial.setBounds((int)b.getPosition().x, (int)b.getPosition().y, (int)b.getRayon()*2, (int)b.getRayon()*2);
         monBallonEnPositionInitial.setVisible(true);
+        //Boutin "invisible"
         monBallonEnPositionInitial.setOpaque(false);
         monBallonEnPositionInitial.setContentAreaFilled(false);
         monBallonEnPositionInitial.setBorderPainted(false);
+        //Add Listeners
         monBallonEnPositionInitial.addMouseListener(this);
         monBallonEnPositionInitial.addMouseMotionListener(this);
+        //Ajout au conteneur principal
         disJPanel.add(monBallonEnPositionInitial);
-
-        this.addMouseListener(this);
         
-		// Déclaration et création du chronomètre
+		// Création du chronomètre
         monChrono = new Timer(75,this);
 
+        //Ajout du conteneur main à la fenêtre
 		this.add(disJPanel);
 		disJPanel.setVisible(true);
 		this.setVisible(true);
 		repaint();
-		
 	}
 	
 	// Effacer ballon
@@ -71,7 +74,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 	
 	// Dessiner ballon
 	public void paint(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g;
+        //Graphics2D g2 = (Graphics2D) g;
         BufferedImage imagePreparation = new BufferedImage(1920, 1080, BufferedImage.TYPE_INT_RGB);
 
         Graphics2D  imagePreparationGraphics = (Graphics2D) imagePreparation.getGraphics();
@@ -87,13 +90,13 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         imagePreparationGraphics.setTransform(reset);
         g.drawImage(imagePreparation, 0, 0, this);
 
-        /*if(enclenche){
+
+            /*APoint [] previsualisation = new APoint [10];
             for(int i=0; i<10; i++){
-                Traj.P.x=Traj.P.x+v0*Math.cos(theta)*(temps+i);
-                Traj.P.y=0.5*9.81*Math.pow((temps+i), 2)-v0*Math.sin(theta)*(temps+i)+Traj.P.y;
-                g.fillOval((int)Traj.P.x, (int)Traj.P.y, 10, 10);
-            }
-        }*/
+                Trajectoire(monBallon, v0, theta, temps+i);
+                previsualisation[i]=P;
+                g.fillOval((int)previsualisation[i].x, (int)previsualisation[i].y, 10, 10);
+            }*/
 	}
 
     // Lancement du chronomètre
