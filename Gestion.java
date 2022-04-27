@@ -45,7 +45,8 @@ public class Gestion {
     // Création de la fenêtre pour l'IHM
     FenetreSelectionBallonCombo maFrameSelectionBallon = new FenetreSelectionBallonCombo(tabBallon);
     
-    FenetreResultat maFrameResultat = new FenetreResultat(score);
+
+    
 
     }
 }

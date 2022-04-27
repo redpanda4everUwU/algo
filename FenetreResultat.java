@@ -56,7 +56,7 @@ public class FenetreResultat extends JFrame implements ActionListener {
        menu.addActionListener(this);
 
 
-       this.setVisible(false);
+       this.setVisible(true);
 
       
    }

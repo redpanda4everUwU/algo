@@ -19,11 +19,13 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     private double v0;
     private double theta;
     private boolean lancer;
+    private int score;
 
 	public FenetrePlotBallon(Ballon b) {
 		monBallon = b;
         temps = 0;
         v0=0;
+        score=0;
         lancer=false;
 		this.setTitle("Ballon");
 		this.setSize(1920, 1080);
@@ -108,15 +110,18 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 
     // Timer avec déplacement qui fonctionne
 	public void actionPerformed(ActionEvent e){
-        temps += 0.5; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
+        temps += 1; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
         if (lancer==true){
             //à partir du moment où le ballon est lancé on calcule la position du ballon et on déplace le ballon à la position correspondante
             Trajectoire(monBallon, v0, theta, temps);
             monBallon.deplacement(P);
+
             System.out.println(temps);
             System.out.println(monBallon.getPosition());
+
             if(monBallon.getPosition().y>800){
                 lancer=false;
+                FenetreResultat maFrameResultat = new FenetreResultat(score);
             }
         }
         repaint();        
@@ -179,4 +184,4 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         // TODO Auto-generated method stub
         
     }
-}	
+}
