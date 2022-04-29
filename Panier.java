@@ -8,18 +8,23 @@ public class Panier {
 
     public Panier(){
         hitbox = null;
-        for (int j=161;j<593;j++){
-            int i=155;
-            hitbox.add(new APoint(i,j));
+        for (int j=919;j>502;j--){ //poto du panier
+            int i1=1758;
+            hitbox.add(new APoint(i1,j));
         }
-        for (int i=155;i<251;i++){
-            int j=593;
-            hitbox.add(new APoint(i,j));
+        for (int i=1758;i>1645;i--){ // bas du panneau
+            int j1=502;
+            hitbox.add(new APoint(i,j1));
         }
-        for (int j=593;j<761;j++){
-            int i=251;
-            hitbox.add(new APoint(i,j));
+        for (int j=502;j>313;j--){ // hauteur du panneu
+            int i2=1645;
+            hitbox.add(new APoint(i2,j));
         }
+        for (int i=1558;i>1565;i--){ // bord opposé du panier 
+            int j2=1645;
+            hitbox.add(new APoint(i,j2));
+        }
+
     }
 
     // MERCI DE VITE METTRE UN BOOLEAN SVP POUR LA METHODE compteur
@@ -29,6 +34,11 @@ public class Panier {
     public void getTrajectoire(){
         
     }
+
+    /*public boolean EstDedans(ballon b){
+        res = false;
+        if ()
+    } */
 
     public int compteur (boolean dedans){
         int score=0 ;
