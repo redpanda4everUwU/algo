@@ -14,9 +14,10 @@ public class FenetreResultat extends JFrame implements ActionListener {
    private Ballon[] monTabBallon ;
   
    // Constructeur
-   public FenetreResultat(int score){
+   public FenetreResultat(int score, Ballon[]unTabBallon){
 
        this.score = score ;
+       this.monTabBallon=unTabBallon;
       
        // La Fenêtre
        this.setTitle("Fenêtre du résultat");
@@ -55,8 +56,10 @@ public class FenetreResultat extends JFrame implements ActionListener {
        m.add(menu);
        menu.addActionListener(this);
 
-
+    
        this.setVisible(true);
+
+       
 
       
    }

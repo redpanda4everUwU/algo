@@ -9,6 +9,7 @@ public class Ballon {
     private double rayon ;
     public APoint position ;
     private Image image;
+    
     // Constructeur
 
     public Ballon (double m, double r, Image i, APoint p){
@@ -34,6 +35,12 @@ public class Ballon {
     
     public APoint getPosition(){
         return this.position;
+    }
+    
+    //Setter
+
+    public void setPosition(APoint pos){
+        position=pos;
     }
     
     // Méthodes

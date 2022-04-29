@@ -20,13 +20,19 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     private double theta;
     private boolean lancer;
     private int score;
+    private int nbTir;
+    private int nbEssais;
+    public Ballon[] monTabBallon;
 
-	public FenetrePlotBallon(Ballon b) {
+	public FenetrePlotBallon(Ballon b, Ballon[]unTabBallon) {
 		monBallon = b;
         temps = 0;
         v0=0;
         score=0;
         lancer=false;
+        nbEssais=10;
+        nbTir=0;
+        monTabBallon=unTabBallon;
         
 		this.setTitle("Ballon");
 		this.setSize(1920, 1080);
@@ -122,9 +128,17 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
             System.out.println(temps);
             System.out.println(monBallon.getPosition());
 
+            //Quand le ballon touche le sol
             if(monBallon.getPosition().y>800){
                 lancer=false;
-                FenetreResultat maFrameResultat = new FenetreResultat(score);
+                nbTir++;
+
+                //Si le joueur a effectué tous ses lancers, le jeu est fini, on affiche la fenêtre des résultats
+                if(nbTir>=nbEssais){
+                    FenetreResultat maFrameResultat = new FenetreResultat(score, monTabBallon);
+                } else { //sinon on remets la balle au centre pour effectuer un nouveau lancer
+                    monBallon.setPosition(new APoint(900, 500));
+                }
             }
         }
         repaint();        
@@ -137,8 +151,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
             APoint p = new APoint(e.getPoint().getX(), e.getPoint().getY());
             v0 = pos.distance(p)*0.10;
             theta=-Math.atan2(p.y-pos.y,p.x-pos.x); 
-            System.out.println(v0 +"et" +theta);       
-            //Traj=new Trajectoire(monBallon,v0,theta,temps);
+            System.out.println(v0 +"et" +theta);
         }
     }
 

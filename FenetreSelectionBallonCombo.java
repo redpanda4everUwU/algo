@@ -74,7 +74,7 @@ public class FenetreSelectionBallonCombo extends JFrame implements ActionListene
    public void actionPerformed(ActionEvent e) {
 		   System.out.println(this.monTabBallon);
 		   int choix = CB.getSelectedIndex();
-		   FenetrePlotBallon maFenetrePlot = new FenetrePlotBallon(monTabBallon[choix]);
+		   FenetrePlotBallon maFenetrePlot = new FenetrePlotBallon(monTabBallon[choix], monTabBallon);
 		   maFenetrePlot.lancement();
 	   }
    }
