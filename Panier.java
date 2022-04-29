@@ -21,10 +21,20 @@ public class Panier {
             hitbox.add(new APoint(i,j));
         }
     }
+
+    // MERCI DE VITE METTRE UN BOOLEAN SVP POUR LA METHODE compteur
     
     // Méthodes
     
     public void getTrajectoire(){
         
+    }
+
+    public int compteur (boolean dedans){
+        int score=0 ;
+        if (dedans==true){
+            score++;
+        }
+        return score;
     }
 }
