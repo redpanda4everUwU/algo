@@ -53,7 +53,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         monBallonEnPositionInitial.setBounds((int)b.getPosition().x, (int)b.getPosition().y, (int)b.getRayon()*2, (int)b.getRayon()*2);
         monBallonEnPositionInitial.setVisible(true);
         //Boutin "invisible"
-        monBallonEnPositionInitial.setOpaque(false);
+        monBallonEnPositionInitial.setOpaque(true);
         monBallonEnPositionInitial.setContentAreaFilled(false);
         monBallonEnPositionInitial.setBorderPainted(false);
         //Add Listeners
@@ -88,14 +88,14 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         AffineTransform reset = imagePreparationGraphics.getTransform();
         imagePreparationGraphics.drawImage(background, 0,0, null);
 
-       // g.drawImage(background, 0,0, null);
         
 		if (monBallon!=null){
-           imagePreparationGraphics.drawImage(monBallon.getDessin(), (int)monBallon.getPosition().x+getInsets().left, (int)monBallon.getPosition().y+getInsets().top, null); 
+           imagePreparationGraphics.drawImage(monBallon.getDessin(), (int)monBallon.getPosition().x+getInsets().left, (int)monBallon.getPosition().y+getInsets().top, null);
+            
 		}
         imagePreparationGraphics.setTransform(reset);
         g.drawImage(imagePreparation, 0, 0, this);
-
+        
 
             /*APoint [] previsualisation = new APoint [10];
             for(int i=0; i<10; i++){
@@ -137,6 +137,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
                 if(nbTir>=nbEssais){
                     Gestion.fermer(this);
                     FenetreResultat maFrameResultat = new FenetreResultat(score, monTabBallon);
+                    monBallon.setPosition(new APoint(900, 500));
                 } else { //sinon on remets la balle au centre pour effectuer un nouveau lancer
                     monBallon.setPosition(new APoint(900, 500));
                 }
