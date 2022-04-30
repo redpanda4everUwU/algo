@@ -30,7 +30,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         v0=0;
         score=0;
         lancer=false;
-        nbEssais=10;
+        nbEssais=1;
         nbTir=0;
         monTabBallon=unTabBallon;
         

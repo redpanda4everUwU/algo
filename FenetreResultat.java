@@ -9,6 +9,7 @@ public class FenetreResultat extends JFrame implements ActionListener {
    private JLabel message ;
    private JPanel nombre ;
    private int score ;
+   private JLabel pointsmarques ;
    private JLabel texte ;
    private JButton menu ;
    private Ballon[] monTabBallon ;
@@ -43,11 +44,17 @@ public class FenetreResultat extends JFrame implements ActionListener {
        texte.setBounds(80, 115, 300, 50);
        m.add(texte);
 
-       // Affichage du score mais je suis en train de chercher
-       nombre = new JPanel(); // Mettre le numéro du score dedans 
+       // Panel pour mettre en avant les points marqués
+       nombre = new JPanel(); 
        nombre.setBounds(150, 60, 100, 50);
        nombre.setBackground(Color.cyan);
        m.add(nombre);
+
+       // Affichage du score
+       System.out.println("Score : " + score);
+       pointsmarques = new JLabel(Integer.toString(score)) ;
+       pointsmarques.setBounds(0, 50, 100, 50);
+       nombre.add(pointsmarques);
 
        // Bouton de retour au menu
        menu = new JButton("Menu");
