@@ -55,12 +55,8 @@ public class FenetreResultat extends JFrame implements ActionListener {
        menu.setBackground(Color.green);
        m.add(menu);
        menu.addActionListener(this);
-
     
        this.setVisible(true);
-
-       
-
       
    }
   
@@ -70,6 +66,7 @@ public class FenetreResultat extends JFrame implements ActionListener {
        
        if (e.getSource()==menu){
            System.out.println("Click sur Menu");
+           Gestion.fermer(this);
            FenetreSelectionBallonCombo monMenu = new FenetreSelectionBallonCombo(monTabBallon);
            monMenu.setVisible(true);
            

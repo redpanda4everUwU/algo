@@ -1,4 +1,5 @@
 import java.awt.*;
+import javax.swing.JFrame;
 
 public class Gestion {
     public static void main (String [] args){
@@ -43,10 +44,12 @@ public class Gestion {
         tabBallon[3]=volley;
         
     // Création de la fenêtre pour l'IHM
-    FenetreSelectionBallonCombo maFrameSelectionBallon = new FenetreSelectionBallonCombo(tabBallon);
+    FenetreSelectionBallonCombo maFrameSelectionBallon = new FenetreSelectionBallonCombo(tabBallon) ;
     
-    
-    
+    }
 
+    public static void fermer(JFrame Fenetre){
+        Fenetre.setVisible(false);
+        Fenetre.dispose();
     }
 }

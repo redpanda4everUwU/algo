@@ -135,6 +135,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 
                 //Si le joueur a effectué tous ses lancers, le jeu est fini, on affiche la fenêtre des résultats
                 if(nbTir>=nbEssais){
+                    Gestion.fermer(this);
                     FenetreResultat maFrameResultat = new FenetreResultat(score, monTabBallon);
                 } else { //sinon on remets la balle au centre pour effectuer un nouveau lancer
                     monBallon.setPosition(new APoint(900, 500));
