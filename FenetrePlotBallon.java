@@ -91,18 +91,19 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         
 		if (monBallon!=null){
            imagePreparationGraphics.drawImage(monBallon.getDessin(), (int)monBallon.getPosition().x+getInsets().left, (int)monBallon.getPosition().y+getInsets().top, null);
-            
+         
 		}
         imagePreparationGraphics.setTransform(reset);
         g.drawImage(imagePreparation, 0, 0, this);
         
 
-            /*APoint [] previsualisation = new APoint [10];
+            APoint [] previsualisation = new APoint [10];
             for(int i=0; i<10; i++){
-                Trajectoire(monBallon, v0, theta, temps+i);
-                previsualisation[i]=P;
-                g.fillOval((int)previsualisation[i].x, (int)previsualisation[i].y, 10, 10);
-            }*/
+                previsualisation[i]=.x=P.x+v0*Math.cos(theta)*temps;
+                previsualisation[i].y=0.5*9.81*Math.pow(temps, 2)-v0*Math.sin(theta)*temps+P.y;
+                
+               // g.fillOval((int)previsualisation[i].x, (int)previsualisation[i].y, 100, 100);
+            }
 	}
 
     // Lancement du chronomètre
