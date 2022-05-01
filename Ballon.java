@@ -1,17 +1,14 @@
 import java.awt.*;
 
-
 public class Ballon {
 
     // Attributs
-    
     private double masse ;
     private double rayon ;
     public APoint position ;
     private Image image;
     
     // Constructeur
-
     public Ballon (double m, double r, Image i, APoint p){
         this.masse = m ;
         this.rayon = r ;
@@ -19,8 +16,7 @@ public class Ballon {
         this.position = p ;
     }
     
-    // Getter
-    
+    // Getters
     public double getMasse(){
         return this.masse ;
     }
@@ -37,14 +33,12 @@ public class Ballon {
         return this.position;
     }
     
-    //Setter
-
+    // Setter
     public void setPosition(APoint pos){
         position=pos;
     }
     
     // Méthodes
-    
     public void dessine(Graphics g){
         g.drawImage(image,0,0,null);
     }
@@ -53,6 +47,5 @@ public class Ballon {
         position.x=p.x;
         position.y=p.y; 
     }
-
 }
 

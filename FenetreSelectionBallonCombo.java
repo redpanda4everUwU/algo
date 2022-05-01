@@ -5,10 +5,11 @@ import java.awt.event.*;
 
 public class FenetreSelectionBallonCombo extends JFrame implements ActionListener{
    
-   // Les Attributs (pour ne pas qu'ils soient des variables)
+   // Attributs
    private JComboBox CB ;
    private Ballon[] monTabBallon ;
    private JLabel regles ;
+   private JLabel reglesessais ;
    
    // Constructeur
    public FenetreSelectionBallonCombo(Ballon[] monTabBallon){
@@ -38,10 +39,10 @@ public class FenetreSelectionBallonCombo extends JFrame implements ActionListene
 	   // Texte choix ballon
 	   JLabel E = new JLabel("Sélectionner le ballon de votre choix :");
 	   E.setSize(360,30);
-	   E.setLocation(90,25); 
+	   E.setLocation(80,25); 
 	   c.add(E);
 
-	   // Textes règle
+	   // Textes qui expliquent les règles
 	   regles = new JLabel("Votre objectif : marquez le plus de panier !!");
 	   regles.setSize(400,40);
 	   regles.setLocation(70,145);
@@ -49,12 +50,17 @@ public class FenetreSelectionBallonCombo extends JFrame implements ActionListene
 
 	   regles = new JLabel("Clickez sur le ballon et gérez le vecteur avec la souris.");
 	   regles.setSize(400,40);
-	   regles.setLocation(30,160);
+	   regles.setLocation(40,160);
 	   c.add(regles);
+
+	   reglesessais = new JLabel("Vous avez 3 essais.");
+	   reglesessais.setSize(400,40);
+	   reglesessais.setLocation(125,175);
+	   c.add(reglesessais);
 
 	   regles = new JLabel("Bonne chance <3");
 	   regles.setSize(400,40);
-	   regles.setLocation(135,175);
+	   regles.setLocation(135,190);
 	   c.add(regles);
 	   
 	   

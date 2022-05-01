@@ -1,11 +1,10 @@
-    public class APoint {
+public class APoint {
+
     // Attributs
-        
     public double x;
     public double y;
         
     // Constructeur
-       
     public APoint(double ax, double ay){
         x = ax;
         y = ay;

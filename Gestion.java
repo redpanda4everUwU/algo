@@ -14,7 +14,6 @@ public class Gestion {
     Image vo;
 
     Toolkit T=Toolkit.getDefaultToolkit();
-    // Mettre le chemin d'accès des images avec un \\ à chaque dossier !
     ba = T.getImage("BasketBall.png");
     ha = T.getImage("HandBall.png");
     te = T.getImage("Tennis.png");
@@ -47,6 +46,7 @@ public class Gestion {
     
     }
 
+    // Méthode pour fermer une fenêtre ^^
     public static void fermer(JFrame Fenetre){
         Fenetre.setVisible(false);
         Fenetre.dispose();

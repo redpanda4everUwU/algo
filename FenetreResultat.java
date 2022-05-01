@@ -4,8 +4,7 @@ import java.awt.event.*;
 
 public class FenetreResultat extends JFrame implements ActionListener {
 
-    // Les Attributs (pour ne pas qu'ils soient des variables)
-   
+   // Attributs (pour ne pas qu'ils soient des variables)
    private JLabel message ;
    private JPanel nombre ;
    private int score ;
@@ -56,7 +55,7 @@ public class FenetreResultat extends JFrame implements ActionListener {
        pointsmarques.setBounds(0, 50, 100, 50);
        nombre.add(pointsmarques);
 
-       // Bouton de retour au menu
+       // Bouton pour retourner au menu
        menu = new JButton("Menu");
        menu.setBounds(120, 165, 160, 70);
        menu.setBackground(Color.green);
