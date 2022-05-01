@@ -8,7 +8,7 @@ import java.awt.geom.AffineTransform;
 
 public class FenetrePlotBallon extends JFrame implements ActionListener, MouseListener, MouseMotionListener{
 	
-    // Les attributs
+    // Attributs
 	private Ballon monBallon;
 	public Image background;
     private Timer monChrono;
@@ -24,13 +24,14 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     private int nbEssais;
     public Ballon[] monTabBallon;
 
+    // Constructeur
 	public FenetrePlotBallon(Ballon b, Ballon[]unTabBallon) {
 		monBallon = b;
         temps = 0;
         v0=0;
         score=0;
         lancer=false;
-        nbEssais=3; // Sinon c'est trop long
+        nbEssais=3; // Nombre d'essais disponibles
         nbTir=0;
         monTabBallon=unTabBallon;
         
@@ -52,14 +53,17 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         monBallonEnPositionInitial=new JButton();
         monBallonEnPositionInitial.setBounds((int)b.getPosition().x, (int)b.getPosition().y, (int)b.getRayon()*2, (int)b.getRayon()*2);
         monBallonEnPositionInitial.setVisible(true);
-        //Boutin "invisible"
+        
+        // Bouton "invisible"
         monBallonEnPositionInitial.setOpaque(true);
         monBallonEnPositionInitial.setContentAreaFilled(false);
         monBallonEnPositionInitial.setBorderPainted(false);
-        //Add Listeners
+
+        // Add Listeners
         monBallonEnPositionInitial.addMouseListener(this);
         monBallonEnPositionInitial.addMouseMotionListener(this);
-        //Ajout au conteneur principal
+
+        // Ajout au conteneur principal
         disJPanel.add(monBallonEnPositionInitial);
         
 		// Création du chronomètre
@@ -119,26 +123,26 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 
     // Timer avec déplacement qui fonctionne
 	public void actionPerformed(ActionEvent e){
-        temps += 1; // Pb, ne s'arrête pas quand je ferme la fenêtre secondaire !
+        temps += 1; 
         if (lancer==true){
-            //à partir du moment où le ballon est lancé on calcule la position du ballon et on déplace le ballon à la position correspondante
+            // A partir du moment où le ballon est lancé on calcule la position du ballon et on déplace le ballon à la position correspondante
             Trajectoire(monBallon, v0, theta, temps);
             monBallon.deplacement(P);
 
             System.out.println(temps);
             System.out.println(monBallon.getPosition());
 
-            //Quand le ballon touche le sol
+            // Quand le ballon touche le sol
             if(monBallon.getPosition().y>800){
                 lancer=false;
                 nbTir++;
 
-                //Si le joueur a effectué tous ses lancers, le jeu est fini, on affiche la fenêtre des résultats
+                // Si le joueur a effectué tous ses lancers, le jeu est fini, on affiche la fenêtre des résultats
                 if(nbTir>=nbEssais){
                     Gestion.fermer(this);
                     FenetreResultat maFrameResultat = new FenetreResultat(score, monTabBallon);
                     monBallon.setPosition(new APoint(900, 500));
-                } else { //sinon on remets la balle au centre pour effectuer un nouveau lancer
+                } else { // Sinon on remets la balle au centre pour effectuer un nouveau lancer
                     monBallon.setPosition(new APoint(900, 500));
                 }
             }

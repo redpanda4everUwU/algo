@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 public class FenetreSelectionBallonCombo extends JFrame implements ActionListener{
    
-   // Les Attributs (pour ne pas qu'ils soient des variables)
+   // Attributs
    private JComboBox CB ;
    private Ballon[] monTabBallon ;
    private JLabel regles ;
@@ -42,7 +42,7 @@ public class FenetreSelectionBallonCombo extends JFrame implements ActionListene
 	   E.setLocation(80,25); 
 	   c.add(E);
 
-	   // Textes règle
+	   // Textes qui expliquent les règles
 	   regles = new JLabel("Votre objectif : marquez le plus de panier !!");
 	   regles.setSize(400,40);
 	   regles.setLocation(70,145);
