@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.* ;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.LinkedList;
 import java.awt.geom.AffineTransform;
 
 
@@ -23,7 +24,10 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     private int nbTir;
     private int nbEssais;
     public Ballon[] monTabBallon;
-
+    Panier Pan;
+    LinkedList <APoint> panier;
+    LinkedList <APoint> panneau;
+    LinkedList <APoint> poteau;
     // Constructeur
 	public FenetrePlotBallon(Ballon b, Ballon[]unTabBallon) {
 		monBallon = b;
@@ -34,6 +38,9 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         nbEssais=3; // Nombre d'essais disponibles
         nbTir=0;
         monTabBallon=unTabBallon;
+
+
+
         
 		this.setTitle("Ballon");
 		this.setSize(1920, 1080);
@@ -101,13 +108,13 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         g.drawImage(imagePreparation, 0, 0, this);
         
 
-            APoint [] previsualisation = new APoint [10];
+            /*APoint [] previsualisation = new APoint [10];
             for(int i=0; i<10; i++){
                 previsualisation[i].x=P.x+v0*Math.cos(theta)*temps;
                 previsualisation[i].y=0.5*9.81*Math.pow(temps, 2)-v0*Math.sin(theta)*temps+P.y;
                 
                // g.fillOval((int)previsualisation[i].x, (int)previsualisation[i].y, 100, 100);
-            }
+            }*/
 	}
 
     // Lancement du chronomètre
@@ -117,14 +124,37 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 
     public void Trajectoire(Ballon b, double v0, double theta, double temps){
         P=b.getPosition();
-
+        Pan=new Panier();
+        /*panier=null;
+        panneau=null;
+        poteau=null;
+        panier=Pan.Panier;
+        panneau=Pan.Panneau;
+        poteau=Pan.Poteau;
+*/
         P.x=P.x+v0*Math.cos(theta)*temps;
         P.y=0.5*9.81*Math.pow(temps, 2)-v0*Math.sin(theta)*temps+P.y;
+        //getRebond(P, theta);
     } 
+    //détection rebond avec le panier
+    public double getRebond(APoint Pos, double alpha){
+
+        double tBal=monBallon.getRayon();
+        for(APoint Panier: panier){
+            if(Pos.distance(Panier)<= tBal){
+            alpha=+ Math.PI/2;
+            }
+        }
+
+
+        
+        return alpha;
+    }
 
     // Timer avec déplacement qui fonctionne
 	public void actionPerformed(ActionEvent e){
         temps += 1; 
+
         if (lancer==true){
             // A partir du moment où le ballon est lancé on calcule la position du ballon et on déplace le ballon à la position correspondante
             Trajectoire(monBallon, v0, theta, temps);

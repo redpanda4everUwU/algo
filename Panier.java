@@ -21,7 +21,7 @@ public class Panier {
             int i2=1645;
             Panneau.add(new APoint(i2,j));
         }
-        for (int i=1558;i>1565;i--){ // Bord opposé du panier 
+        for (int i=1558;i<1565;i++){ // Bord opposé du panier 
             int j2=1645;
             Panier.add(new APoint(i,j2));
         }
