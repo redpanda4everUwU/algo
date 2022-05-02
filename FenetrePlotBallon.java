@@ -103,7 +103,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 
             APoint [] previsualisation = new APoint [10];
             for(int i=0; i<10; i++){
-                previsualisation[i]=.x=P.x+v0*Math.cos(theta)*temps;
+                previsualisation[i].x=P.x+v0*Math.cos(theta)*temps;
                 previsualisation[i].y=0.5*9.81*Math.pow(temps, 2)-v0*Math.sin(theta)*temps+P.y;
                 
                // g.fillOval((int)previsualisation[i].x, (int)previsualisation[i].y, 100, 100);
