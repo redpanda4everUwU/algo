@@ -128,7 +128,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     }
 
     public void Trajectoire(Ballon b, double v0, double theta, double temps){
-        for (int i=1; i<=10;i++){
+        
         P=b.getPosition();
         
         APoint Pold=P;
@@ -136,12 +136,13 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         
 
         
-        P.x=P.x+v0*Math.cos(theta)*temps*i*0.1;
+        P.x=P.x+v0*Math.cos(theta)*temps;
         
-        P.y=0.5*9.81*Math.pow(temps*i*0.1, 2)-v0*Math.sin(theta)*temps*i*0.1+P.y;
+        P.y=0.5*9.81*Math.pow(temps, 2)-v0*Math.sin(theta)*temps+P.y;
         monBallon.deplacement(P);
+        if(EstDedans(b)) score++;
         repaint();
-        }
+        
         
         System.out.println(theta);
     } 
@@ -149,7 +150,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     public double getRebond(APoint Pos,APoint oldP, double theta){
        
 
-        double tBal=monBallon.getRayon();
+        double tBal=monBallon.getRayon()*2;
         
         for(APoint Pt: Panier){
             if(Pos.distance(Pt)<= tBal){
@@ -180,15 +181,20 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     }
     public boolean EstDedans(Ballon b){
         boolean res = false;
-        if (  ( (b.position.x + b.getRayon())>=1565) && ((b.position.x + b.getRayon())<=1645) && ( (b.position.y + b.getRayon())== 479)  ){
+        if ( ( (b.position.x + b.getRayon())>=1565) && ((b.position.x + b.getRayon())<=1645) &&  ( (b.position.y + b.getRayon())>= 450)&&( (b.position.y + b.getRayon())<= 500)  ){
+
+            lancer=false;
             res = true;
+            nbTir++;
+            monBallon.setPosition(new APoint(900, 500));
+            
         }
         return res;
     }
 
     // Timer avec déplacement qui fonctionne
 	public void actionPerformed(ActionEvent e){
-        temps += 0.5; 
+        temps +=1; 
 
         if (lancer==true){
             // A partir du moment où le ballon est lancé on calcule la position du ballon et on déplace le ballon à la position correspondante
@@ -202,14 +208,15 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
             if(monBallon.getPosition().y>800){
                 lancer=false;
                 nbTir++;
+                monBallon.setPosition(new APoint(900, 500));
 
                 // Si le joueur a effectué tous ses lancers, le jeu est fini, on affiche la fenêtre des résultats
                 if(nbTir>=nbEssais){
                     Gestion.fermer(this);
                     FenetreResultat maFrameResultat = new FenetreResultat(score, monTabBallon,Panneau,Poteau,Panier);
-                    monBallon.setPosition(new APoint(900, 500));
-                } else { // Sinon on remets la balle au centre pour effectuer un nouveau lancer
-                    monBallon.setPosition(new APoint(900, 500));
+                    
+                
+                   
                 }
             }
         }
@@ -221,7 +228,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     public void mouseDragged(MouseEvent e) {
         if(e.getSource()==monBallonEnPositionInitial){
             APoint p = new APoint(e.getPoint().getX(), e.getPoint().getY());
-            v0 = pos.distance(p)*0.050;
+            v0 = pos.distance(p)*0.10;
             theta=-Math.atan2(p.y-pos.y,p.x-pos.x); 
         
             System.out.println(v0 +"et" +theta);
@@ -238,6 +245,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        
         // TODO Auto-generated method stub
         
     }
