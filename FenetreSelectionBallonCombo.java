@@ -62,9 +62,9 @@ public class FenetreSelectionBallonCombo extends JFrame implements ActionListene
 	   regles.setLocation(40,160);
 	   c.add(regles);
 
-	   reglesessais = new JLabel("Vous avez 3 essais.");
+	   reglesessais = new JLabel("Vous avez 3 essais. Le panier est à droite.");
 	   reglesessais.setSize(400,40);
-	   reglesessais.setLocation(125,175);
+	   reglesessais.setLocation(70,175);
 	   c.add(reglesessais);
 
 	   regles = new JLabel("Bonne chance <3");
