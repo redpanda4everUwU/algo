@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import java.awt.geom.AffineTransform;
 
-
 public class FenetrePlotBallon extends JFrame implements ActionListener, MouseListener, MouseMotionListener{
 	
     // Attributs
@@ -144,13 +143,13 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     } 
     //détection rebond avec le panier
     public double getRebond(APoint Pos,APoint oldP, double theta){
-        double alpha;
+       
 
         double tBal=monBallon.getRayon();
         
         for(APoint Pt: Panier){
             if(Pos.distance(Pt)<= tBal){
-                alpha=Math.atan2(Pos.y-oldP.y, Pos.x-oldP.x);
+                
                 theta=+Math.PI/2;
                 return theta;
                 
@@ -158,7 +157,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         }
         for(APoint Pt: Poteau){
             if(Pos.distance(Pt)<= tBal){
-                alpha=Math.atan2(Pos.y-oldP.y, Pos.x-oldP.x);
+                
                
                 theta=+Math.PI;
 
@@ -167,7 +166,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
             }
         for(APoint Pt: Panneau){
             if(Pos.distance(Pt)<= tBal){
-                alpha=Math.atan2(Pos.y-oldP.y, Pos.x-oldP.x);
+                
                 theta=+Math.PI;
                     return theta;
             }
@@ -185,7 +184,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 
     // Timer avec déplacement qui fonctionne
 	public void actionPerformed(ActionEvent e){
-        temps += 1; 
+        temps += 0.5; 
 
         if (lancer==true){
             // A partir du moment où le ballon est lancé on calcule la position du ballon et on déplace le ballon à la position correspondante
