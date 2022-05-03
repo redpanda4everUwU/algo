@@ -16,6 +16,7 @@ public class FenetreResultat extends JFrame implements ActionListener {
    LinkedList <APoint> Panneau;
    LinkedList <APoint> Poteau;
    LinkedList <APoint> Panier;
+
    // Constructeur
    public FenetreResultat(int score, Ballon[]unTabBallon,LinkedList<APoint> panneau, LinkedList<APoint> poteau, LinkedList <APoint>panier){
 
@@ -82,7 +83,6 @@ public class FenetreResultat extends JFrame implements ActionListener {
            Gestion.fermer(this);
            FenetreSelectionBallonCombo monMenu = new FenetreSelectionBallonCombo(monTabBallon,Panneau,Poteau,Panier);
            monMenu.setVisible(true);
-           
        }
    }
 }

@@ -27,6 +27,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     LinkedList <APoint> Panneau;
     LinkedList <APoint> Poteau;
     LinkedList <APoint> Panier;
+
     // Constructeur
 	public FenetrePlotBallon(Ballon b, Ballon[]unTabBallon, LinkedList<APoint> panneau, LinkedList<APoint> poteau, LinkedList <APoint>panier) {
 		monBallon = b;
@@ -41,15 +42,11 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         Poteau=poteau;
         Panier=panier;
         
-
-
-        
 		this.setTitle("Ballon");
 		this.setSize(1920, 1080);
 		this.setLocation(0, 0);
 		this.setResizable(false);
         this.addMouseListener(this);
-		
 
 		Toolkit T = Toolkit.getDefaultToolkit();
 		background = T.getImage("basket_ball_game_background.jpg");
@@ -134,7 +131,8 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         
         System.out.println(theta);
     } 
-    //détection rebond avec le panier
+
+    // Détection rebond avec le panier
     public double getRebond(APoint Pos,APoint oldP, double theta){
         double alpha;
 
@@ -143,10 +141,9 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         for(APoint Pt: Panier){
             if(Pos.distance(Pt)<= tBal){
                 alpha=Math.atan2(Pos.y-oldP.y, Pos.x-oldP.x);
-            
-                
                 }
         }
+
         for(APoint Pt: Poteau){
             if(Pos.distance(Pt)<= tBal){
                 alpha=Math.atan2(Pos.y-oldP.y, Pos.x-oldP.x);
@@ -156,12 +153,12 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
                 return theta;
                 }
             }
+
         for(APoint Pt: Panneau){
             if(Pos.distance(Pt)<= tBal){
                 alpha=Math.atan2(Pos.y-oldP.y, Pos.x-oldP.x);
                 if(alpha>=0)
                     theta=+Math.PI/2;
-
                     else theta=-Math.PI/2;
                     return theta;
             }
@@ -214,25 +211,19 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
             APoint p = new APoint(e.getPoint().getX(), e.getPoint().getY());
             v0 = pos.distance(p)*0.10;
             theta=-Math.atan2(p.y-pos.y,p.x-pos.x); 
-        
             System.out.println(v0 +"et" +theta);
         }
     }
 
-
     @Override
     public void mouseMoved(MouseEvent e) {
         // TODO Auto-generated method stub
-        
     }
-
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+        // TODO Auto-generated method stub 
     }
-
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -240,7 +231,6 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
             pos = new APoint(e.getPoint().getX(), e.getPoint().getY());
         }
     }
-
 
     @Override
     public void mouseReleased(MouseEvent e) {
@@ -251,17 +241,13 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         System.out.println(monBallon.getPosition());
     }
 
-
     @Override
     public void mouseEntered(MouseEvent e) {
         // TODO Auto-generated method stub
-        
     }
-
 
     @Override
     public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+        // TODO Auto-generated method stub   
     }
 }
