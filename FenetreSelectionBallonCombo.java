@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.Random ; // Pour les couleurs aléatoires
 import javax.swing.* ;
 import java.awt.*;
@@ -10,10 +11,18 @@ public class FenetreSelectionBallonCombo extends JFrame implements ActionListene
    private Ballon[] monTabBallon ;
    private JLabel regles ;
    private JLabel reglesessais ;
+	
+   LinkedList <APoint> Panneau;
+   LinkedList <APoint> Poteau;
+   LinkedList <APoint> Panier;
    
    // Constructeur
-   public FenetreSelectionBallonCombo(Ballon[] monTabBallon){
-	   
+   public FenetreSelectionBallonCombo(Ballon[] monTabBallon, LinkedList <APoint> panneau,LinkedList <APoint> panier,LinkedList <APoint>poteau){
+	  
+		Panneau=panneau;
+		Poteau=poteau;
+		Panier=panier;
+
 	   this.monTabBallon = monTabBallon ;
 	   this.setTitle("Selection du ballon");
 	   this.setSize(400, 270);
@@ -81,7 +90,7 @@ public class FenetreSelectionBallonCombo extends JFrame implements ActionListene
 		   System.out.println(this.monTabBallon);
 		   int choix = CB.getSelectedIndex();
 		   Gestion.fermer(this);
-		   FenetrePlotBallon maFenetrePlot = new FenetrePlotBallon(monTabBallon[choix], monTabBallon);
+		   FenetrePlotBallon maFenetrePlot = new FenetrePlotBallon(monTabBallon[choix], monTabBallon, Panneau, Poteau,Panier);
 		   maFenetrePlot.lancement();
 	   }
    }

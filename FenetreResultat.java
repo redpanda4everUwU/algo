@@ -1,6 +1,7 @@
 import javax.swing.* ;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.LinkedList;
 
 public class FenetreResultat extends JFrame implements ActionListener {
 
@@ -12,9 +13,15 @@ public class FenetreResultat extends JFrame implements ActionListener {
    private JLabel texte ;
    private JButton menu ;
    private Ballon[] monTabBallon ;
-  
+   LinkedList <APoint> Panneau;
+   LinkedList <APoint> Poteau;
+   LinkedList <APoint> Panier;
    // Constructeur
-   public FenetreResultat(int score, Ballon[]unTabBallon){
+   public FenetreResultat(int score, Ballon[]unTabBallon,LinkedList<APoint> panneau, LinkedList<APoint> poteau, LinkedList <APoint>panier){
+
+        Panneau=panneau;
+        Poteau=poteau;
+        Panier=panier;    
 
        this.score = score ;
        this.monTabBallon=unTabBallon;
@@ -73,7 +80,7 @@ public class FenetreResultat extends JFrame implements ActionListener {
        if (e.getSource()==menu){
            System.out.println("Click sur Menu");
            Gestion.fermer(this);
-           FenetreSelectionBallonCombo monMenu = new FenetreSelectionBallonCombo(monTabBallon);
+           FenetreSelectionBallonCombo monMenu = new FenetreSelectionBallonCombo(monTabBallon,Panneau,Poteau,Panier);
            monMenu.setVisible(true);
            
        }
