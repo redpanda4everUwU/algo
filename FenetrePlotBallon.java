@@ -13,7 +13,8 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 	public Image background;
     private Timer monChrono;
     private double temps;
-    private JButton monBallonEnPositionInitial;
+    //private JButton monBallonEnPositionInitial;
+    private JPanel monBallonEnPositionInitial;
     private APoint pos;
     public APoint P;
     private double v0;
@@ -58,14 +59,15 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 		disJPanel.setBounds(0,0,1920,1080);
         
         // Bouton pour pouvoir cliquer sur le ballon : on veut que le bouton ne soit pas visible mais qu'on puisse intéragir avec
-        monBallonEnPositionInitial=new JButton();
+
+        monBallonEnPositionInitial=new JPanel();
         monBallonEnPositionInitial.setBounds((int)b.getPosition().x, (int)b.getPosition().y, (int)b.getRayon()*2, (int)b.getRayon()*2);
         monBallonEnPositionInitial.setVisible(true);
         
-        // Bouton "invisible"
+        // Bouton "invisible" A CHANGER LE BOUTON EN JPANEL 
         monBallonEnPositionInitial.setOpaque(true);
-        monBallonEnPositionInitial.setContentAreaFilled(false);
-        monBallonEnPositionInitial.setBorderPainted(false);
+       // monBallonEnPositionInitial.setContentAreaFilled(false);
+       // monBallonEnPositionInitial.setBorderPainted(false);
 
         // Add Listeners
         monBallonEnPositionInitial.addMouseListener(this);
@@ -103,12 +105,18 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         
 		if (monBallon!=null){
            imagePreparationGraphics.drawImage(monBallon.getDessin(), (int)monBallon.getPosition().x+getInsets().left, (int)monBallon.getPosition().y+getInsets().top, null);
-         
-		}
+        }
         imagePreparationGraphics.setTransform(reset);
+<<<<<<< HEAD
         g.drawImage(imagePreparation, 0, 0, this);
-        
+=======
 
+>>>>>>> 534e007820a0881f9301fb0d64fef2ff22cf1a19
+        
+  
+        g.drawImage(imagePreparation, 0, 0, this);
+
+            // UTILE ?
             /*APoint [] previsualisation = new APoint [10];
             for(int i=0; i<10; i++){
                 previsualisation[i].x=P.x+v0*Math.cos(theta)*temps;
