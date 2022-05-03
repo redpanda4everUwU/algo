@@ -4,6 +4,7 @@ import java.awt.event.* ;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
+import java.util.concurrent.DelayQueue;
 import java.awt.geom.AffineTransform;
 
 public class FenetrePlotBallon extends JFrame implements ActionListener, MouseListener, MouseMotionListener{
@@ -41,7 +42,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         Poteau=poteau;
         Panier=panier;
         
-
+        monBallon.setPosition(new APoint(900, 500));
 
         
 		this.setTitle("Ballon");
@@ -77,7 +78,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         disJPanel.add(monBallonEnPositionInitial);
         
 		// Création du chronomètre
-        monChrono = new Timer(75,this);
+        monChrono = new Timer(10,this);
 
         //Ajout du conteneur main à la fenêtre
 		this.add(disJPanel);
@@ -95,6 +96,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 	// Dessiner ballon
 	public void paint(Graphics g) {
         //Graphics2D g2 = (Graphics2D) g;
+      
         BufferedImage imagePreparation = new BufferedImage(1920, 1080, BufferedImage.TYPE_INT_RGB);
 
         Graphics2D  imagePreparationGraphics = (Graphics2D) imagePreparation.getGraphics();
@@ -142,6 +144,8 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         monBallon.deplacement(P);
         if(EstDedans(b)) score++;
         repaint();
+       
+        
         
         
         System.out.println(theta);
@@ -181,7 +185,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     }
     public boolean EstDedans(Ballon b){
         boolean res = false;
-        if ( ( (b.position.x + b.getRayon())>=1565) && ((b.position.x + b.getRayon())<=1645) &&  ( (b.position.y + b.getRayon())>= 450)&&( (b.position.y + b.getRayon())<= 500)  ){
+        if ( ( (b.position.x + b.getRayon())>=1565) && ((b.position.x + b.getRayon())<=1645) &&  ( (b.position.y + b.getRayon())>= 450)&&( (b.position.y + b.getRayon())<= 510)  ){
 
             lancer=false;
             res = true;
@@ -194,8 +198,9 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 
     // Timer avec déplacement qui fonctionne
 	public void actionPerformed(ActionEvent e){
-        temps +=1; 
-
+        temps +=0.25;
+         
+        
         if (lancer==true){
             // A partir du moment où le ballon est lancé on calcule la position du ballon et on déplace le ballon à la position correspondante
             Trajectoire(monBallon, v0, theta, temps);
