@@ -126,39 +126,48 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 
     public void Trajectoire(Ballon b, double v0, double theta, double temps){
         P=b.getPosition();
-        theta=getRebond(P, theta);
- 
+        APoint Pold=P;
+        theta=getRebond(P,Pold,theta);
         P.x=P.x+v0*Math.cos(theta)*temps;
         
         P.y=0.5*9.81*Math.pow(temps, 2)-v0*Math.sin(theta)*temps+P.y;
         
+        System.out.println(theta);
     } 
     //détection rebond avec le panier
-    public double getRebond(APoint Pos, double alpha){
-        
+    public double getRebond(APoint Pos,APoint oldP, double theta){
+        double alpha;
+
         double tBal=monBallon.getRayon();
+        
         for(APoint Pt: Panier){
             if(Pos.distance(Pt)<= tBal){
-                alpha=+ Math.PI/2;
+                alpha=Math.atan2(Pos.y-oldP.y, Pos.x-oldP.x);
+            
+                
                 }
         }
         for(APoint Pt: Poteau){
             if(Pos.distance(Pt)<= tBal){
+                alpha=Math.atan2(Pos.y-oldP.y, Pos.x-oldP.x);
                 if(alpha>=0)
-                alpha=+ Math.PI/2;
-                else alpha=- Math.PI/2;
+                theta=+Math.PI/2;
+                else theta=-Math.PI/2;
+                return theta;
                 }
             }
         for(APoint Pt: Panneau){
             if(Pos.distance(Pt)<= tBal){
+                alpha=Math.atan2(Pos.y-oldP.y, Pos.x-oldP.x);
                 if(alpha>=0)
-                    alpha=+ Math.PI/2;
+                    theta=+Math.PI/2;
 
-                    else alpha=- Math.PI/2;
+                    else theta=-Math.PI/2;
+                    return theta;
             }
         }
         
-        return alpha;
+        return theta;
     }
     public boolean EstDedans(Ballon b){
         boolean res = false;
@@ -170,7 +179,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 
     // Timer avec déplacement qui fonctionne
 	public void actionPerformed(ActionEvent e){
-        temps += 1; 
+        temps += 0.1; 
 
         if (lancer==true){
             // A partir du moment où le ballon est lancé on calcule la position du ballon et on déplace le ballon à la position correspondante
@@ -205,7 +214,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
             APoint p = new APoint(e.getPoint().getX(), e.getPoint().getY());
             v0 = pos.distance(p)*0.10;
             theta=-Math.atan2(p.y-pos.y,p.x-pos.x); 
-            theta=getRebond(P, theta);
+        
             System.out.println(v0 +"et" +theta);
         }
     }
