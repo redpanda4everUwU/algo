@@ -107,11 +107,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
   
         g.drawImage(imagePreparation, 0, 0, this);
 
-   
-
-
-        
-
+            // UTILE ?
             /*APoint [] previsualisation = new APoint [10];
             for(int i=0; i<10; i++){
                 previsualisation[i].x=P.x+v0*Math.cos(theta)*temps;
