@@ -31,7 +31,7 @@ public class FenetreSelectionBallonCombo extends JFrame implements ActionListene
 	   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	   this.setResizable(false);
 	   
-	   // Couleurs funky aléatoires du menu ^^
+	   // Couleurs funky aléatoires du menu
 	   Random aleatoire = new Random();
 	   int r = aleatoire.nextInt(255);
 	   int g = aleatoire.nextInt(255);

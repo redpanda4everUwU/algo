@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 public class FenetreResultat extends JFrame implements ActionListener {
 
-   // Attributs (pour ne pas qu'ils soient des variables)
+   // Attributs
    private JLabel message ;
    private JPanel nombre ;
    private int score ;
@@ -16,6 +16,8 @@ public class FenetreResultat extends JFrame implements ActionListener {
    LinkedList <APoint> Panneau;
    LinkedList <APoint> Poteau;
    LinkedList <APoint> Panier;
+
+
    // Constructeur
    public FenetreResultat(int score, Ballon[]unTabBallon,LinkedList<APoint> panneau, LinkedList<APoint> poteau, LinkedList <APoint>panier){
 
@@ -33,7 +35,7 @@ public class FenetreResultat extends JFrame implements ActionListener {
        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        this.setResizable(false);
 
-       // Petit conteneur main car c'est plus joli
+       // Conteneur main 
        JPanel m = new JPanel() ;
        m.setLayout(null);
        m.setBounds(10,10,380,280);

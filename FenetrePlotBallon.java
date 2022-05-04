@@ -4,7 +4,6 @@ import java.awt.event.* ;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
-import java.util.concurrent.DelayQueue;
 import java.awt.geom.AffineTransform;
 
 public class FenetrePlotBallon extends JFrame implements ActionListener, MouseListener, MouseMotionListener{
@@ -14,7 +13,6 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 	public Image background;
     private Timer monChrono;
     private double temps;
-    //private JButton monBallonEnPositionInitial;
     private JPanel monBallonEnPositionInitial;
     private APoint pos;
     public APoint P;
@@ -28,6 +26,8 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     LinkedList <APoint> Panneau;
     LinkedList <APoint> Poteau;
     LinkedList <APoint> Panier;
+
+
     // Constructeur
 	public FenetrePlotBallon(Ballon b, Ballon[]unTabBallon, LinkedList<APoint> panneau, LinkedList<APoint> poteau, LinkedList <APoint>panier) {
 		monBallon = b;
@@ -64,12 +64,10 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         monBallonEnPositionInitial=new JPanel();
         monBallonEnPositionInitial.setBounds((int)b.getPosition().x, (int)b.getPosition().y, (int)b.getRayon()*2, (int)b.getRayon()*2);
         monBallonEnPositionInitial.setVisible(true);
-        
-        // Bouton "invisible" A CHANGER LE BOUTON EN JPANEL 
+    
+        // Bouton "invisible" 
         monBallonEnPositionInitial.setOpaque(true);
-       // monBallonEnPositionInitial.setContentAreaFilled(false);
-       // monBallonEnPositionInitial.setBorderPainted(false);
-
+  
         // Add Listeners
         monBallonEnPositionInitial.addMouseListener(this);
         monBallonEnPositionInitial.addMouseMotionListener(this);
@@ -111,17 +109,6 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         imagePreparationGraphics.setTransform(reset);
         g.drawImage(imagePreparation, 0, 0, this);
         
-  
-        
-
-            // UTILE ?
-            /*APoint [] previsualisation = new APoint [10];
-            for(int i=0; i<10; i++){
-                previsualisation[i].x=P.x+v0*Math.cos(theta)*temps;
-                previsualisation[i].y=0.5*9.81*Math.pow(temps, 2)-v0*Math.sin(theta)*temps+P.y;
-                
-               // g.fillOval((int)previsualisation[i].x, (int)previsualisation[i].y, 100, 100);
-            }*/
 	}
 
     // Lancement du chronomètre
@@ -129,6 +116,8 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         monChrono.start();
     }
 
+
+    //Calcul de la trajectoire
     public void Trajectoire(Ballon b, double v0, double theta, double temps){
         
         P=b.getPosition();
@@ -137,20 +126,16 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         theta=getRebond(P,Pold,theta);
         
 
-        
         P.x=P.x+v0*Math.cos(theta)*temps;
-        
         P.y=0.5*9.81*Math.pow(temps, 2)-v0*Math.sin(theta)*temps+P.y;
         monBallon.deplacement(P);
         if(EstDedans(b)) score++;
         repaint();
        
-        
-        
-        
-        System.out.println(theta);
     } 
-    //détection rebond avec le panier
+
+
+    //détection des rebonds avec le panier et les poteaux
     public double getRebond(APoint Pos,APoint oldP, double theta){
        
 
@@ -164,6 +149,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
                 
                 }
         }
+
         for(APoint Pt: Poteau){
             if(Pos.distance(Pt)<= tBal){
                 
@@ -173,6 +159,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
                 return theta;
                 }
             }
+
         for(APoint Pt: Panneau){
             if(Pos.distance(Pt)<= tBal){
                 
@@ -183,6 +170,8 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         
         return theta;
     }
+
+    //Tester si le panier est marqué
     public boolean EstDedans(Ballon b){
         boolean res = false;
         if ( ( (b.position.x + b.getRayon())>=1565) && ((b.position.x + b.getRayon())<=1645) &&  ( (b.position.y + b.getRayon())>= 450)&&( (b.position.y + b.getRayon())<= 510)  ){
@@ -196,7 +185,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
         return res;
     }
 
-    // Timer avec déplacement qui fonctionne
+    // Timer
 	public void actionPerformed(ActionEvent e){
         temps +=0.25;
          
@@ -205,10 +194,6 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
             // A partir du moment où le ballon est lancé on calcule la position du ballon et on déplace le ballon à la position correspondante
             Trajectoire(monBallon, v0, theta, temps);
             
-
-            System.out.println(temps);
-            System.out.println(monBallon.getPosition());
-
             // Quand le ballon touche le sol
             if(monBallon.getPosition().y>800){
                 lancer=false;
@@ -219,9 +204,6 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
                 if(nbTir>=nbEssais){
                     Gestion.fermer(this);
                     FenetreResultat maFrameResultat = new FenetreResultat(score, monTabBallon,Panneau,Poteau,Panier);
-                    
-                
-                   
                 }
             }
         }
@@ -233,7 +215,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     public void mouseDragged(MouseEvent e) {
         if(e.getSource()==monBallonEnPositionInitial){
             APoint p = new APoint(e.getPoint().getX(), e.getPoint().getY());
-            v0 = pos.distance(p)*0.10;
+            v0 = pos.distance(p)*0.05;
             theta=-Math.atan2(p.y-pos.y,p.x-pos.x); 
         
             System.out.println(v0 +"et" +theta);
@@ -267,8 +249,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
     @Override
     public void mouseReleased(MouseEvent e) {
         //lancement du ballon
-        //On lance à t=0
-        temps=0;
+        temps=0; //On lance à t=0
         lancer=true;
         System.out.println(monBallon.getPosition());
     }

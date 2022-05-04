@@ -38,11 +38,8 @@ public class Ballon {
         position=pos;
     }
     
-    // Méthodes
-    public void dessine(Graphics g){
-        g.drawImage(image,0,0,null);
-    }
-
+    // Méthode
+    //Définir la position du ballon au point p en paramètre
     public void deplacement(APoint p){
         position.x=p.x;
         position.y=p.y; 

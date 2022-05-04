@@ -26,7 +26,7 @@ public class Gestion {
         Poteau.add(new APoint(i1,j));
     }
 
-    for (int j=502;j>313;j--){ // Hauteur du panneu
+    for (int j=502;j>313;j--){ // Hauteur du panneau
         int i2=1645;
         Panneau.add(new APoint(i2,j));
     }
@@ -68,7 +68,7 @@ public class Gestion {
     
     }
 
-    // Méthode pour fermer une fenêtre ^^
+    // Méthode pour fermer une fenêtre
     public static void fermer(JFrame Fenetre){
         Fenetre.setVisible(false);
         Fenetre.dispose();
