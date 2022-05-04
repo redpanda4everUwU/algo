@@ -189,7 +189,7 @@ public class FenetrePlotBallon extends JFrame implements ActionListener, MouseLi
 
             lancer=false;
             res = true;
-            nbTir++;
+            
             monBallon.setPosition(new APoint(900, 500));
             
         }
