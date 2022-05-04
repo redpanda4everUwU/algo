@@ -55,7 +55,7 @@ public class Gestion {
         Ballon tennis = new Ballon(58.5, 8, te, p);
     
         // On veut un ballon de volley
-        Ballon volley = new Ballon(280, 50, vo, p);
+        Ballon volley = new Ballon(280, 35, vo, p);
     
     // Remplissage du tableau par les ballons standards créés auparavant
         tabBallon[0]=basket;
